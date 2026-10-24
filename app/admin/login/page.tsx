@@ -111,7 +111,7 @@ function LoginForm() {
           <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
           Server-Side HMAC Shield
         </span>
-        <span>Passkey: mahmud2026</span>
+        <span>Authorized Personnel Only</span>
       </div>
     </div>
   );

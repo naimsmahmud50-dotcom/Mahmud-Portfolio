@@ -131,7 +131,7 @@ Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 The portfolio includes a fully functional standalone management dashboard:
 
 1. Navigate to: `http://localhost:3000/admin`
-2. Login with your `ADMIN_PASSWORD` defined in `.env` (Default: `mahmud2026`).
+2. Login with the `ADMIN_PASSWORD` configured in your private `.env` file.
 3. Manage projects, upload case study assets, edit site copy in English & Bengali, and read inbound inquiries in real time.
 
 ---

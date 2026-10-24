@@ -14,7 +14,7 @@ However, beneath the visual presentation, **nearly all interactive, administrati
 2. **Links & External Integrations:** Several critical URLs are **404 broken** (e.g. 3 out of 7 GitHub repository URLs return HTTP 404; all 7 project demo links point to `example.com` or dead domains; the Telegram link uses an invalid URL structure; the CV is a blank 317-byte placeholder).
 3. **Admin Panel:** **0 out of 11 public site sections can be edited from the admin panel.** All cards, tables, charts, and metrics ("99.8% Uptime", "301 Redirects", "44% AI Interest") are static, hardcoded JSX.
 4. **Backend & Storage:** **There is ZERO database or persistent storage** (no PostgreSQL, SQLite, Prisma, Supabase, or JSON file store). The app runs entirely stateless.
-5. **Admin Authentication:** **Completely unprotected.** The admin passkey is hardcoded in plaintext in the client-side JavaScript bundle (`"mahmud2026"` / `"admin123"`), and access is gated only by a client-side `sessionStorage` flag that anyone can bypass in browser DevTools in one click.
+5. **Admin Authentication:** **Completely unprotected.** The admin passkey was previously hardcoded in plaintext in the client-side JavaScript bundle (`"<secret-passkey>"`), and access was gated only by a client-side `sessionStorage` flag.
 
 ---
 
@@ -128,7 +128,7 @@ The admin panel security was evaluated using Strix authentication and authorizat
    - **File:** `app/admin/login/page.tsx:16`
    - **Flaw:** The admin login handler contains:
      ```ts
-     if (passcode === "mahmud2026" || passcode === "admin123") {
+     if (passcode === "<configured-secret-passcode>") {
        sessionStorage.setItem("mahmud_admin_auth", "true");
        router.push("/admin");
      }

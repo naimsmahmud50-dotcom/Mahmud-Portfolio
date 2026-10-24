@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 
 export const ADMIN_COOKIE_NAME = process.env.ADMIN_COOKIE_NAME || "mahmud_admin_session";
-const SESSION_SECRET = process.env.ADMIN_SESSION_SECRET || "mahmud_hasan_ultra_secure_session_key_2026";
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "mahmud2026";
+const SESSION_SECRET = process.env.ADMIN_SESSION_SECRET || "default_session_secret_change_in_production";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "";
 
 // 7 days session duration
 const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
