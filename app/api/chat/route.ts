@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 // In-memory sliding window rate limiter (IP -> timestamps array)
 const chatRateLimitMap = new Map<string, number[]>();
 const CHAT_RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000; // 5 minutes

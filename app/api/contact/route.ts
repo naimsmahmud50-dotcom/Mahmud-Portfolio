@@ -3,6 +3,9 @@ import { Resend } from "resend";
 import { contactSchema } from "@/lib/validations/contact";
 import prisma from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 // In-memory sliding-window rate limit tracker (IP -> timestamp array)
 const rateLimitMap = new Map<string, number[]>();
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes

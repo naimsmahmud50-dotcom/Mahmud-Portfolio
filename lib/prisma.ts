@@ -1,5 +1,10 @@
 import { PrismaClient } from "@prisma/client";
 
+// Ensure DATABASE_URL fallback exists during cloud build if env var is missing
+if (!process.env.DATABASE_URL) {
+  process.env.DATABASE_URL = "file:./dev.db";
+}
+
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
