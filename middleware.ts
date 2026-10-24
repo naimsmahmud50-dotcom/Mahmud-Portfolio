@@ -5,7 +5,7 @@ import { verifyAdminSessionToken, ADMIN_COOKIE_NAME } from "@/lib/auth";
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Only protect /admin and subroutes, allow /admin/login
+  // 1. Protect Web Admin Pages (/admin and subroutes, allow /admin/login)
   if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
     const sessionCookie = request.cookies.get(ADMIN_COOKIE_NAME)?.value;
     const isValid = await verifyAdminSessionToken(sessionCookie);
@@ -17,9 +17,24 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // 2. Protect Admin API Endpoints (/api/admin/*, allow /api/admin/login)
+  if (pathname.startsWith("/api/admin") && pathname !== "/api/admin/login") {
+    const sessionCookie = request.cookies.get(ADMIN_COOKIE_NAME)?.value;
+    const authHeader = request.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
+    const token = sessionCookie || authHeader;
+    const isValid = await verifyAdminSessionToken(token);
+
+    if (!isValid) {
+      return NextResponse.json(
+        { success: false, error: "Unauthorized. Valid administrator session required." },
+        { status: 401 }
+      );
+    }
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/api/admin/:path*"],
 };

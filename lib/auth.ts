@@ -1,11 +1,54 @@
 import { cookies } from "next/headers";
 
 export const ADMIN_COOKIE_NAME = process.env.ADMIN_COOKIE_NAME || "mahmud_admin_session";
-const SESSION_SECRET = process.env.ADMIN_SESSION_SECRET || "default_session_secret_change_in_production";
+
+/**
+ * Generate cryptographically secure random hex string using standard Web Crypto API
+ */
+function generateRandomHex(byteCount = 32): string {
+  const bytes = new Uint8Array(byteCount);
+  crypto.getRandomValues(bytes);
+  let hex = "";
+  for (let i = 0; i < bytes.length; i++) {
+    hex += bytes[i].toString(16).padStart(2, "0");
+  }
+  return hex;
+}
+
+// Cryptographically secure ephemeral fallback: strictly avoid predictable static default strings
+const rawSecret = process.env.ADMIN_SESSION_SECRET;
+const SESSION_SECRET: string =
+  rawSecret && rawSecret.trim().length >= 16
+    ? rawSecret.trim()
+    : (() => {
+        if (process.env.NODE_ENV === "production") {
+          console.warn(
+            "[SECURITY NOTICE]: ADMIN_SESSION_SECRET is not configured or too short in environment. Generating an ephemeral cryptographic secret for this runtime instance."
+          );
+        }
+        return generateRandomHex(32);
+      })();
+
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "";
 
 // 7 days session duration
 const SESSION_DURATION_MS = 7 * 24 * 60 * 60 * 1000;
+
+/**
+ * Constant-time string equality check to mitigate timing side-channel attacks.
+ * Native Edge Runtime and Node.js compatible without external runtime dependencies.
+ */
+function timingSafeEqualStrings(a: string, b: string): boolean {
+  if (typeof a !== "string" || typeof b !== "string") return false;
+  const aLen = a.length;
+  const bLen = b.length;
+  let mismatch = aLen ^ bLen;
+  for (let i = 0; i < aLen; i++) {
+    const charB = i < bLen ? b.charCodeAt(i) : 0;
+    mismatch |= a.charCodeAt(i) ^ charB;
+  }
+  return mismatch === 0;
+}
 
 /**
  * Import HMAC crypto key
@@ -68,8 +111,8 @@ export async function verifyAdminSessionToken(token: string | null | undefined):
     const expectedSigBuffer = await crypto.subtle.sign("HMAC", key, enc.encode(payloadBase64));
     const expectedSigHex = bufferToHex(expectedSigBuffer);
 
-    // Constant-time comparison
-    if (providedSigHex !== expectedSigHex) return false;
+    // Constant-time signature verification
+    if (!timingSafeEqualStrings(providedSigHex, expectedSigHex)) return false;
 
     const payloadJson = Buffer.from(payloadBase64, "base64url").toString("utf-8");
     const payload = JSON.parse(payloadJson);
@@ -84,11 +127,12 @@ export async function verifyAdminSessionToken(token: string | null | undefined):
 }
 
 /**
- * Check admin password from environment
+ * Check admin password from environment with timing-attack immunity
  */
 export function verifyAdminPassword(passwordAttempt: string): boolean {
-  if (!passwordAttempt) return false;
-  return passwordAttempt === ADMIN_PASSWORD;
+  if (!passwordAttempt || typeof passwordAttempt !== "string") return false;
+  if (!ADMIN_PASSWORD || ADMIN_PASSWORD.trim() === "") return false;
+  return timingSafeEqualStrings(passwordAttempt, ADMIN_PASSWORD);
 }
 
 /**

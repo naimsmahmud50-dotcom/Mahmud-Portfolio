@@ -69,9 +69,37 @@ export async function POST(req: Request) {
       );
     }
 
-    // 5. Generate secure random filename
+    // 5. Generate secure random filename and inspect magic bytes
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
+
+    // Cryptographic & Format Magic Byte Verification
+    let isValidContent = false;
+    if (mimeType === "image/jpeg") {
+      isValidContent = buffer.length > 3 && buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff;
+    } else if (mimeType === "image/png") {
+      isValidContent = buffer.length > 8 && buffer[0] === 0x89 && buffer[1] === 0x50 && buffer[2] === 0x4e && buffer[3] === 0x47;
+    } else if (mimeType === "image/gif") {
+      isValidContent = buffer.length > 3 && buffer[0] === 0x47 && buffer[1] === 0x49 && buffer[2] === 0x46;
+    } else if (mimeType === "image/webp") {
+      isValidContent = buffer.length >= 12 && buffer.subarray(0, 4).toString("ascii") === "RIFF" && buffer.subarray(8, 12).toString("ascii") === "WEBP";
+    } else if (mimeType === "image/avif") {
+      isValidContent = buffer.length >= 12 && buffer.subarray(4, 8).toString("ascii") === "ftyp";
+    } else if (mimeType === "image/svg+xml") {
+      const svgText = buffer.toString("utf-8");
+      const dangerousPatterns = /<script|onload|onerror|onclick|onmouseover|javascript:|<foreignObject|<iframe|<embed/i;
+      isValidContent = !dangerousPatterns.test(svgText);
+    }
+
+    if (!isValidContent) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Malicious or invalid image payload detected. File content does not match permitted image structure.",
+        },
+        { status: 400 }
+      );
+    }
 
     const safeUniqueName = `${Date.now()}-${crypto.randomUUID().slice(0, 8)}${standardExt}`;
     const cleanFileName = path.basename(safeUniqueName);

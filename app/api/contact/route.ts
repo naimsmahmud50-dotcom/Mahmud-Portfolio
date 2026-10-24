@@ -109,6 +109,20 @@ export async function POST(req: Request) {
       }
     }
 
+    // Helper to sanitize untrusted strings and neutralize HTML injection
+    const escapeHtml = (str: string) =>
+      String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeService = escapeHtml(service);
+    const safeMessage = escapeHtml(message);
+
     // 5. Email Dispatch via Resend (with Graceful Fallback if Keys Absent)
     const resendApiKey = process.env.RESEND_API_KEY;
     const recipientEmail =
@@ -126,16 +140,16 @@ export async function POST(req: Request) {
             from: "Mahmud Hasan Portfolio <onboarding@resend.dev>",
             to: [recipientEmail],
             reply_to: email,
-            subject: `⚡ New Project Inquiry: ${name} [${service}]`,
+            subject: `⚡ New Project Inquiry: ${safeName} [${safeService}]`,
             html: `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #0B0C0E; color: #ECEAE3; border-radius: 12px; border: 1px solid rgba(236,234,227,0.10);">
               <h2 style="color: #C8F24A; margin-top: 0;">New Project Inquiry</h2>
-              <p><strong>Client Name:</strong> ${name}</p>
-              <p><strong>Email Address:</strong> <a href="mailto:${email}" style="color: #C8F24A;">${email}</a></p>
-              <p><strong>Service Domain:</strong> ${service}</p>
+              <p><strong>Client Name:</strong> ${safeName}</p>
+              <p><strong>Email Address:</strong> <a href="mailto:${encodeURI(email)}" style="color: #C8F24A;">${safeEmail}</a></p>
+              <p><strong>Service Domain:</strong> ${safeService}</p>
               <hr style="border: 0; border-top: 1px solid rgba(236,234,227,0.10); margin: 20px 0;" />
               <h3 style="color: #ECEAE3; font-size: 14px; text-transform: uppercase;">Project Scope & Details:</h3>
-              <p style="white-space: pre-wrap; line-height: 1.6; color: #8E9197;">${message}</p>
+              <p style="white-space: pre-wrap; line-height: 1.6; color: #8E9197;">${safeMessage}</p>
               <hr style="border: 0; border-top: 1px solid rgba(236,234,227,0.10); margin: 20px 0;" />
               <p style="font-size: 12px; color: #8E9197;">Sent via mahmudhasan.dev portfolio inquiry form.</p>
             </div>
@@ -176,8 +190,8 @@ export async function POST(req: Request) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               chat_id: telegramChatId,
-              text: `🚀 *New Project Inquiry*\n*Name:* ${name}\n*Email:* ${email}\n*Service:* ${service}\n\n*Message:*\n${message}`,
-              parse_mode: "Markdown",
+              text: `🚀 <b>New Project Inquiry</b>\n<b>Name:</b> ${safeName}\n<b>Email:</b> ${safeEmail}\n<b>Service:</b> ${safeService}\n\n<b>Message:</b>\n${safeMessage}`,
+              parse_mode: "HTML",
             }),
           }
         );
