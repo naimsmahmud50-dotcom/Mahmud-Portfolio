@@ -1,0 +1,168 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900,500,400&f[]=clash-display@600,700,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import '../styles/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--text);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Automatic Bengali font application when lang="bn" */
+html[lang="bn"],
+html[lang="bn"] body,
+html[lang="bn"] .font-display,
+html[lang="bn"] .hero-name,
+html[lang="bn"] .title-huge {
+  font-family: var(--font-bengali), var(--font-sans);
+}
+
+/* Accessible high-contrast focus rings */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Custom Text Selection with Accent & Ink */
+::selection {
+  background-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Lenis Smooth Scroll Core Styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* 3% Opacity Film Grain Noise Overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Fluid Editorial Typography Scales */
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 16vw, 115px);
+  line-height: 0.90;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+@media (min-width: 769px) {
+  .hero-name {
+    font-size: clamp(56px, 12.8vw, 215px);
+  }
+}
+
+/* Bangla Mode Hero Name Scale & Line Height */
+html[lang="bn"] .hero-name {
+  font-family: var(--font-bengali), var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(38px, 13.5vw, 98px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 769px) {
+  html[lang="bn"] .hero-name {
+    font-size: clamp(48px, 11vw, 180px);
+  }
+}
+
+/* Hero Letter Hover Interaction (Disabled on touch devices) */
+@media (hover: hover) and (pointer: fine) {
+  .hero-letter-hover {
+    transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
+                color 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    will-change: transform, color;
+  }
+  .hero-letter-hover:hover {
+    transform: translateY(-6px);
+    color: var(--accent);
+  }
+}
+
+.title-huge {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+/* 12-Column Grid Container Utilities */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.container-1440 {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.5rem, 4vw, 4rem);
+  padding-right: clamp(1.5rem, 4vw, 4rem);
+}
+
+/* Clean luxury scrollbar on transparent track */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}

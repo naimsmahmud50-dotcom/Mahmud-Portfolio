@@ -1,0 +1,56 @@
+/* Dennis Snellenberg Design Tokens — Mahmud Hasan Portfolio */
+:root {
+  --bg: #0B0C0E;            /* page base, ~60% of the screen */
+  --surface: #121417;       /* cards, nav panel, footer */
+  --surface-2: #1A1D21;     /* hover states, inputs, raised elements */
+  --surface-raised: var(--surface-2);
+  --line: rgba(236, 234, 227, 0.10);
+  --line-strong: rgba(236, 234, 227, 0.22);
+  --text: #ECEAE3;          /* headings, primary text */
+  --text-2: #B9BBBF;        /* body paragraphs */
+  --muted: #8E9197;         /* labels, meta */
+  --accent: #C8F24A;        /* slightly softer lime than before */
+  --accent-hover: #D9FF63;
+  --accent-ink: #0B0C0E;    /* text on accent */
+  --accent-fill: #C8F24A;   /* fills only, always with dark ink text */
+  --accent-soft: rgba(200, 242, 74, 0.10);   /* tinted backgrounds, glows, selected states */
+  --accent-glow: rgba(200, 242, 74, 0.18);
+  --success: #4ADE80;
+  --danger: #F87171;
+
+  /* Aliases & Semantic Compatibility */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --border: var(--line);
+  --border-hover: var(--line-strong);
+
+  /* Fonts */
+  --font-display: 'Clash Display', 'Satoshi', sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-bengali: 'Hind Siliguri', sans-serif;
+}
+
+[data-theme="light"] {
+  --bg: #F4F2EC;
+  --surface: #FFFFFF;
+  --surface-2: #ECE9E1;
+  --surface-raised: var(--surface-2);
+  --line: rgba(11, 12, 14, 0.10);
+  --line-strong: rgba(11, 12, 14, 0.22);
+  --text: #0B0C0E;
+  --text-2: #43464B;
+  --muted: #6B6E74;
+  --accent: #3F6B00; /* deep green for readable text/links on light */
+  --accent-fill: #C8F24A; /* fills only, always with dark ink text */
+  --accent-hover: #D9FF63;
+  --accent-ink: #0B0C0E;
+  --accent-soft: rgba(63, 107, 0, 0.10);
+  --accent-glow: rgba(63, 107, 0, 0.18);
+  --success: #15803D;
+  --danger: #DC2626;
+
+  --background: var(--bg);
+  --foreground: var(--text);
+  --border: var(--line);
+  --border-hover: var(--line-strong);
+}

@@ -1,0 +1,166 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 1. Site Settings (Single Source of Truth for Global Meta & Channels)
+model SiteSettings {
+  id             String   @id @default("default")
+  name           String   @default("Mahmud Hasan")
+  title          String   @default("Mahmud Hasan — AI Automation & Full-Stack Architect")
+  tagline        String   @default("Architecting intelligent automation systems and high-craft digital products that scale autonomously.")
+  location       String   @default("Dhaka, Bangladesh")
+  timeZone       String   @default("Asia/Dhaka")
+  email          String   @default("mahmudhasan.infodev@gmail.com")
+  phone          String   @default("+880 1767-850859")
+  whatsapp       String   @default("https://wa.me/8801767850859")
+  telegram       String   @default("https://t.me/naimsmahmud50")
+  github         String   @default("https://github.com/naimsmahmud50-dotcom")
+  linkedin       String   @default("https://www.linkedin.com/in/mahmud-hasan-687908269?utm_source=share_via&utm_content=profile&utm_medium=member_android")
+  seoDescription String   @default("Portfolio of Mahmud Hasan. Specializing in AI Automation, Autonomous Agent Systems, Full-Stack Next.js Web Applications, and Flutter Android Development.")
+  seoKeywords    String   @default("Mahmud Hasan, AI Automation, Full-Stack Web Developer, Android Developer, Next.js, Flutter, NestJS, Bangladesh")
+  ogImageUrl     String   @default("/images/mahmud.jpg")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// 2. Hero Section
+model Hero {
+  id              String   @id @default("default")
+  badgeEn         String   @default("AI Automation Expert & Developer")
+  badgeBn         String   @default("এআই অটোমেশন বিশেষজ্ঞ ও ডেভেলপার")
+  name            String   @default("Mahmud Hasan")
+  dash            String   @default("—")
+  introEn         String   @default("Dedicated to crafting exceptional digital products with uncompromising performance, fluid interaction design, and self-operating AI pipelines.")
+  introBn         String   @default("আপসহীন পারফরম্যান্স, সাবলীল ইন্টারঅ্যাকশন ডিজাইন এবং স্বয়ংক্রিয় এআই পাইপলাইনের সমন্বয়ে উন্নতমানের ডিজিটাল পণ্য তৈরিতে নিবেদিত।")
+  positioningEn   String   @default("Based in Dhaka, Bangladesh — architecting intelligent autonomous workflows, full-stack web platforms & mobile ecosystems.")
+  positioningBn   String   @default("ঢাকা, বাংলাদেশভিত্তিক — বুদ্ধিমত্তা সম্পন্ন স্বায়ত্তশাসিত ওয়ার্কফ্লো, ফুল-স্ট্যাক ওয়েব প্ল্যাটফর্ম ও মোবাইল ইকোসিস্টেম নির্মাতা।")
+  availableBadgeEn String  @default("Available for Q4/2026 Collaboration")
+  availableBadgeBn String  @default("কিউ৪/২০২৬ যৌথ কাজের জন্য উপলব্ধ")
+  roles           String   @default("[\"AI Automation Architecture\",\"Full-Stack Web Engineering\",\"Android App Development\",\"Autonomous Agent Systems\"]")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// 3. About Section
+model About {
+  id             String   @id @default("default")
+  heroHeadlineEn String   @default("Architecting autonomous pipelines & high-craft digital tools from Bangladesh—")
+  heroHeadlineBn String   @default("স্বায়ত্তশাসিত এআই পাইপলাইন ও উচ্চমানের ডিজিটাল সিস্টেমের রূপকার—")
+  storyP1En      String   @default("I am an AI Automation Architect and Full-Stack Software Engineer based in Dhaka, Bangladesh. I bridge the divide between bleeding-edge machine intelligence and surgical web performance.")
+  storyP1Bn      String   @default("আমি মাহমুদ হাসান, ঢাকা, বাংলাদেশভিত্তিক একজন এআই অটোমেশন আর্কিটেক্ট ও ফুল-স্ট্যাক সফটওয়্যার ইঞ্জিনিয়ার। অত্যাধুনিক কৃত্রিম বুদ্ধিমত্তা ও নিখুঁত ওয়েব পারফরম্যান্সের মেলবন্ধন তৈরি করাই আমার মূল লক্ষ্য।")
+  storyP2En      String   @default("My engineering philosophy is rooted in self-operating workflows and uncompromising tactile polish. From enterprise madrasah platforms serving thousands to sub-50ms security interceptors, I construct systems that thrive under high real-world demand.")
+  storyP2Bn      String   @default("স্বয়ংক্রিয় কাজের ধারা এবং অত্যন্ত মসৃণ ইউজার এক্সপেরিয়েন্স আমার কাজের মূল ভিত্তি। হাজারো ব্যবহারকারীর মাদরাসা ম্যানেজমেন্ট সিস্টেম থেকে শুরু করে ৫০ মিলিসেকেন্ডের এন্ডপয়েন্ট সিকিউরিটি ডেমোন—বাস্তব পৃথিবীর কঠিনতম চাহিদা পূরণেই আমার আনন্দ।")
+  storyP3En      String   @default("Beyond production code, I actively engineer tools tailored for the local and global market, ensuring businesses scale autonomously without unnecessary operational bottlenecks.")
+  storyP3Bn      String   @default("শুধুমাত্র কোডিং নয়, বরং দেশীয় ও আন্তর্জাতিক বাজারের জন্য স্বয়ংক্রিয় টেক সল্যুশন আর্কিটেক্ট করাই আমার নিয়মিত কাজ, যাতে যেকোনো ব্যবসা স্বয়ংক্রিয়ভাবে নিজের গতি বজায় রাখতে পারে।")
+  avatarUrl      String   @default("/images/mahmud.jpg")
+  cvUrl          String   @default("/cv.pdf")
+  locationEn     String   @default("Dhaka, Bangladesh")
+  locationBn     String   @default("ঢাকা, বাংলাদেশ")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// 4. Skills Catalog
+model Skill {
+  id        String   @id @default(cuid())
+  name      String
+  category  String   // "AI & Automation" | "Web Architecture" | "Mobile Engineering" | "Cloud & DevOps" | "Core Tools"
+  level     String?  @default("Expert")
+  featured  Boolean  @default(false)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// 5. Projects Catalog
+model Project {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  title          String
+  subtitle       String
+  year           String
+  category       String
+  filterCategory String   @default("all") // "all" | "web" | "android" | "automation"
+  summary        String
+  problem        String
+  solution       String
+  result         String?
+  stack          String   // JSON string array e.g. ["Next.js", "NestJS"]
+  highlights     String   // JSON string array
+  role           String   @default("Lead Architect")
+  status         String   @default("Production")
+  metrics        String
+  coverImage     String
+  mockupType     String   @default("browser") // "browser" | "mobile" | "terminal"
+  demoUrl        String?
+  githubUrl      String?
+  featured       Boolean  @default(true)
+  order          Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// 6. Services & Capabilities
+model Service {
+  id             String   @id @default(cuid())
+  titleEn        String
+  titleBn        String
+  descriptionEn  String
+  descriptionBn  String
+  deliverables   String   // JSON string array
+  icon           String   @default("Code")
+  featured       Boolean  @default(true)
+  order          Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// 7. Testimonials
+model Testimonial {
+  id        String   @id @default(cuid())
+  author    String
+  role      String
+  company   String
+  quoteEn   String
+  quoteBn   String
+  avatarUrl String?
+  featured  Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// 8. Experience & Milestones
+model Experience {
+  id            String   @id @default(cuid())
+  period        String
+  roleEn        String
+  roleBn        String
+  company       String
+  location      String   @default("Dhaka, Bangladesh")
+  descriptionEn String
+  descriptionBn String
+  technologies  String   // JSON string array
+  featured      Boolean  @default(true)
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// 9. Contact Messages (Inquiries Inbox)
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  service   String
+  message   String
+  ipAddress String?
+  status    String   @default("unread") // "unread" | "read" | "replied" | "archived"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

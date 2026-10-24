@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "chatAi": "Ask Mahmud AI"
+  },
+  "hero": {
+    "greeting": "Hello, I am",
+    "name": "Mahmud Hasan",
+    "tagline": "AI Automation Expert · Full-Stack Web App Developer · Android Specialist",
+    "pitch": "Architecting intelligent automation systems and high-craft digital products that scale autonomously.",
+    "viewWork": "View Work",
+    "hireMe": "Get in Touch",
+    "scroll": "Scroll to explore"
+  },
+  "sections": {
+    "featuredWork": "Featured Work",
+    "viewProject": "View",
+    "allProjects": "All Projects",
+    "services": "Services & Capabilities",
+    "about": "About Mahmud",
+    "process": "Engineering Process",
+    "contactCta": "Let's work together"
+  },
+  "footer": {
+    "localTime": "Local time",
+    "location": "Bangladesh",
+    "rights": "Mahmud Hasan. All rights reserved.",
+    "backToTop": "Back to top"
+  }
+}
