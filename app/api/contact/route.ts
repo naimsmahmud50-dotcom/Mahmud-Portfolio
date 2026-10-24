@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import { contactSchema } from "@/lib/validations/contact";
 import prisma from "@/lib/prisma";
 
@@ -117,13 +116,18 @@ export async function POST(req: Request) {
 
     if (resendApiKey) {
       try {
-        const resend = new Resend(resendApiKey);
-        await resend.emails.send({
-          from: "Mahmud Hasan Portfolio <onboarding@resend.dev>",
-          to: recipientEmail,
-          replyTo: email,
-          subject: `⚡ New Project Inquiry: ${name} [${service}]`,
-          html: `
+        const resendRes = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${resendApiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Mahmud Hasan Portfolio <onboarding@resend.dev>",
+            to: [recipientEmail],
+            reply_to: email,
+            subject: `⚡ New Project Inquiry: ${name} [${service}]`,
+            html: `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #0B0C0E; color: #ECEAE3; border-radius: 12px; border: 1px solid rgba(236,234,227,0.10);">
               <h2 style="color: #C8F24A; margin-top: 0;">New Project Inquiry</h2>
               <p><strong>Client Name:</strong> ${name}</p>
@@ -135,12 +139,17 @@ export async function POST(req: Request) {
               <hr style="border: 0; border-top: 1px solid rgba(236,234,227,0.10); margin: 20px 0;" />
               <p style="font-size: 12px; color: #8E9197;">Sent via mahmudhasan.dev portfolio inquiry form.</p>
             </div>
-          `,
+            `,
+          }),
         });
-        console.log(`[Contact API] Inquiry successfully sent via Resend to ${recipientEmail}`);
+        if (resendRes.ok) {
+          console.log(`[Contact API] Inquiry successfully sent via Resend to ${recipientEmail}`);
+        } else {
+          const resendErrData = await resendRes.text();
+          console.warn("[Contact API] Resend returned non-OK status:", resendRes.status, resendErrData);
+        }
       } catch (resendErr) {
         console.error("[Contact API] Resend email delivery failed:", resendErr);
-        // We log the error but still return success to the user with a note
       }
     } else {
       console.log(
