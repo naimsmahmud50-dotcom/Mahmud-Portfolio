@@ -130,10 +130,21 @@ export default function FeaturedProjects({ projects: propProjects }: FeaturedPro
                 onClick={(e) => handleRowClick(e, proj.slug)}
                 className="group py-8 sm:py-12 md:py-14 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-400 cursor-pointer"
               >
-                {/* Left: Project Title (Stays --text on hover, shifts ~20px) */}
-                <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-normal tracking-tight text-text transition-transform duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:translate-x-5">
-                  {proj.title}
-                </h3>
+                {/* Left: Project Title & Mobile Thumbnail */}
+                <div className="flex items-center gap-4 sm:gap-6">
+                  <div className="relative w-14 h-11 sm:w-16 sm:h-12 rounded-lg overflow-hidden border border-line shrink-0 lg:hidden bg-surface">
+                    <Image
+                      src={proj.cover}
+                      alt={proj.title}
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-normal tracking-tight text-text transition-transform duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] lg:group-hover:translate-x-5">
+                    {proj.title}
+                  </h3>
+                </div>
 
                 {/* Right: Category + Year & Mobile Arrow */}
                 <div className="flex items-center gap-6 text-xs sm:text-sm font-mono text-muted uppercase tracking-wider">

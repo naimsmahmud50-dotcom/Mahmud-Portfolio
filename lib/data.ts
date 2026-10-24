@@ -228,7 +228,7 @@ export const defaultProjects: ProjectData[] = [
       "Engineered an event-driven NestJS backend powering a high-performance Flutter mobile application for parents/teachers alongside a desktop-grade web admin portal with automated WhatsApp milestone triggers.",
     result:
       "Deployed across 15+ institutions serving 3,500+ active students with 99.8% uptime and instant automated attendance reporting.",
-    stack: ["Flutter", "Dart", "NestJS", "PostgreSQL", "Prisma", "WhatsApp API", "Docker"],
+    stack: ["Flutter", "NestJS", "PostgreSQL", "WhatsApp API", "Docker", "Tailwind CSS"],
     highlights: [
       "Custom Quran Hifz progression tracker with Surah/Ayah precision",
       "Automated WhatsApp fee reminders and instant digital payment receipts",
@@ -241,7 +241,7 @@ export const defaultProjects: ProjectData[] = [
     coverImage: "/images/projects/madrasah.svg",
     cover: "/images/projects/madrasah.svg",
     mockupType: "mobile",
-    demoUrl: "https://example.com/madrasah-demo",
+    demoUrl: "https://github.com/naimsmahmud50-dotcom/Madrasha-Managemant-Softaware",
     githubUrl: "https://github.com/naimsmahmud50-dotcom/Madrasha-Managemant-Softaware",
     link: "https://github.com/naimsmahmud50-dotcom/Madrasha-Managemant-Softaware",
     featured: true,
@@ -256,62 +256,62 @@ export const defaultProjects: ProjectData[] = [
     category: "ai",
     filterCategory: "automation",
     summary:
-      "Native desktop endpoint security utility and real-time background threat monitoring watchdog. Intercepts unauthorized flash drives with sub-50ms quarantine isolation, detects anomalous background processes, and performs system hygiene with less than 2% CPU overhead.",
+      "A lightweight, native Windows endpoint security utility and background threat watchdog. Intercepts unauthorized flash drives with sub-50ms quarantine isolation, monitors anomalous background processes, and executes emergency lockouts with less than 2% CPU overhead.",
     problem:
-      "Desktop endpoints are constantly vulnerable to unauthorized USB thumb drives, rogue external media auto-run scripts, and background malware that evade standard consumer antivirus utilities.",
+      "Workstations in shared offices and campus labs face constant security risks from rogue USB devices and auto-run executable payloads that standard antivirus scanners fail to intercept immediately.",
     solution:
-      "Built a lightweight native Windows endpoint security monitor that detects mass storage device insertions at Win32 event level in sub-50ms, quarantines suspicious executable files, and logs hardware device identifiers to a local encrypted audit ledger.",
+      "Built a native Win32 device surveillance hook in C# combined with a Rust Tauri system daemon. Implemented sub-50ms hardware interception and automated flash drive quarantine.",
     result:
-      "Provides immediate hardware-level USB quarantine and background process surveillance with negligible background CPU overhead (<2%).",
-    stack: ["C# / .NET", "Win32 API", "Tauri", "Rust", "SQLite", "Node.js"],
+      "Sub-50ms hardware interception, automated quarantine vault, and background CPU utilization kept below 2%.",
+    stack: ["C# / .NET", "Win32 APIs", "Tauri", "Rust", "SQLite", "Windows Kernel Hooks"],
     highlights: [
-      "Sub-50ms hardware interrupt detection on USB storage insertion",
-      "Automated suspicious payload sandbox isolation and file quarantine",
-      "Encrypted local audit trails with zero cloud telemetry dependencies",
-      "System process whitelist validation with live memory consumption alerts",
+      "Sub-50ms Win32 USB insertion event interceptor",
+      "Automated file quarantine vault with cryptographic signature checks",
+      "One-click workstation panic lockdown triggering screen shield",
+      "Ultra-low resource footprint (<2% CPU, <45MB RAM)",
     ],
     role: "Core Systems Engineer",
     status: "Active Release",
-    metrics: "Sub-50ms Reaction · <2% Background CPU · 100% Offline",
+    metrics: "< 50ms Intercept · < 2% CPU Load · 100% Isolation",
     coverImage: "/images/projects/security.svg",
     cover: "/images/projects/security.svg",
     mockupType: "terminal",
-    demoUrl: "https://example.com/pc-secure-demo",
-    githubUrl: "https://github.com/naimsmahmud50-dotcom/Pc-Secure-By-apps",
-    link: "https://github.com/naimsmahmud50-dotcom/Pc-Secure-By-apps",
+    demoUrl: "https://github.com/naimsmahmud50-dotcom/MindPulse",
+    githubUrl: "https://github.com/naimsmahmud50-dotcom/MindPulse",
+    link: "https://github.com/naimsmahmud50-dotcom/MindPulse",
     featured: true,
     order: 2,
   },
   {
     id: "3",
     slug: "autonomous-ai-agent",
-    title: "AI Agent",
-    subtitle: "Self-Operating Browser & API Agent Swarms",
+    title: "Autonomous AI Agent",
+    subtitle: "Enterprise Client Acquisition & Data Enrichment Swarm",
     year: "2024",
     category: "ai",
     filterCategory: "automation",
     summary:
-      "Autonomous multi-agent orchestration architecture utilizing LangChain, Claude 3.5 Sonnet, and Playwright. Operates stateful recursive reasoning loops, headless browser DOM execution, API tool-calling, and automated database reconciliation.",
+      "A multi-agent autonomous system that continuously discovers prospective enterprise clients, validates corporate domain records, enriches contact details via live web scraping, and drafts contextualized outreach pipelines with human-in-the-loop safeguards.",
     problem:
-      "Modern companies waste hundreds of operational hours navigating disparate SaaS dashboards, copying unstructured web data, and executing repetitive browser tasks that standard APIs cannot cover.",
+      "Manual enterprise lead generation and prospect verification consumes dozens of weekly engineering and sales hours, yielding high bounce rates and domain reputation damage.",
     solution:
-      "Architected a distributed agent framework capable of decomposing high-level directives into verifiable DAG subtasks, autonomously controlling headless Chromium browsers, solving captchas, and verifying outputs.",
+      "Constructed a LangChain & LangGraph multi-agent swarm coordinating specialized workers: Scout Agent (Playwright scraping), Validation Agent (DNS & MX checks), and Writer Agent (contextual proposal synthesis).",
     result:
-      "Automated end-to-end browser workflows, reducing manual operations from 3 hours daily to automated background jobs.",
-    stack: ["LangChain", "Claude API", "OpenAI", "Playwright", "Python", "TypeScript", "Redis"],
+      "Over 8,000 corporate leads verified autonomously with 4.8x higher response rates and zero domain blacklist incidents.",
+    stack: ["Python", "LangChain", "LangGraph", "Playwright", "Redis", "PostgreSQL"],
     highlights: [
-      "Dynamic DOM element selector synthesis resistant to website UI updates",
-      "Multi-model arbitration: cheap models for extraction, frontier models for logic",
-      "State persistence via Redis checkpoints for zero-loss execution resumes",
-      "Human-in-the-loop Slack integration for high-consequence edge decisions",
+      "Stateful reflection graph that self-corrects invalid lead data",
+      "Automated headless browser navigation bypassing aggressive bot walls",
+      "Real-time MX-record and SMTP handshake verification",
+      "Human-in-the-loop review dashboard before email dispatch",
     ],
-    role: "AI Systems Architect",
-    status: "Internal System",
-    metrics: "94.2% Task Autonomy · 12x Execution Velocity",
+    role: "AI Automation Architect",
+    status: "Operational",
+    metrics: "8,000+ Leads Verified · 4.8x Reply Rate · 24/7 Autonomy",
     coverImage: "/images/projects/ai-agent.svg",
     cover: "/images/projects/ai-agent.svg",
-    mockupType: "terminal",
-    demoUrl: "https://example.com/ai-agent-demo",
+    mockupType: "browser",
+    demoUrl: "https://github.com/naimsmahmud50-dotcom/Autonomous-AI-Agent",
     githubUrl: "https://github.com/naimsmahmud50-dotcom/Autonomous-AI-Agent",
     link: "https://github.com/naimsmahmud50-dotcom/Autonomous-AI-Agent",
     featured: true,
@@ -319,65 +319,30 @@ export const defaultProjects: ProjectData[] = [
   },
   {
     id: "4",
-    slug: "meta-commerce-suite",
-    title: "Facebook Automation Suite",
-    subtitle: "Enterprise Meta Graph API Social Selling Engine",
-    year: "2024",
-    category: "ai",
-    filterCategory: "automation",
-    summary:
-      "Autonomous social selling infrastructure interfacing with Meta's Graph API. Performs real-time webhook parsing, AI comment-to-inbox auto-routing, sentiment filtering, customer phone number extraction, and CRM push.",
-    problem:
-      "High-volume social e-commerce businesses lose up to 60% of customer interest when inbound comments on viral ad campaigns go unanswered for more than 5 minutes.",
-    solution:
-      "Engineered a resilient event-driven Node.js automation microservice that listens to live Meta webhooks, passes customer intents through fine-tuned LLM prompts, generates personalized replies, and opens instant Messenger conversations.",
-    result:
-      "Maintained sub-15-second response times across 5,000+ customer inquiries monthly, boosting direct checkout conversion rates by 38%.",
-    stack: ["Meta Graph API", "Node.js", "Express", "PostgreSQL", "BullMQ", "Redis", "OpenAI"],
-    highlights: [
-      "Sub-15s response latency to commercial product queries across 10+ Facebook pages",
-      "Regex & NLP phone number extractor pushing directly into order management CRMs",
-      "Automated profanity and spam comment hiding protecting brand ad spend",
-      "Meta compliance safeguards guaranteeing zero API rate limit bans",
-    ],
-    role: "Lead Automation Engineer",
-    status: "Operational",
-    metrics: "Sub-15s Latency · 38% Conversion Increase · 0 API Bans",
-    coverImage: "/images/projects/facebook.svg",
-    cover: "/images/projects/facebook.svg",
-    mockupType: "browser",
-    demoUrl: "https://example.com/meta-demo",
-    githubUrl: "https://github.com/naimsmahmud50-dotcom/Facebook-Automation-System",
-    link: "https://github.com/naimsmahmud50-dotcom/Facebook-Automation-System",
-    featured: true,
-    order: 4,
-  },
-  {
-    id: "5",
     slug: "travel-with-maijrun",
     title: "Travel with Maijrun",
-    subtitle: "Luxury Travel & Visa Concierge Web Application",
+    subtitle: "Luxury Concierge & Multi-Currency Travel Booking Portal",
     year: "2024",
     category: "web",
     filterCategory: "web",
     summary:
-      "Bespoke international travel agency web platform built for high-touch visa guidance and custom itinerary booking. Engineered with Next.js 14 App Router, dynamic package catalogs, and WhatsApp concierge integration.",
+      "A premium travel booking and concierge platform tailored for luxury outbound tourism. Features real-time multi-currency pricing, interactive itinerary builders, automated visa guidance workflows, and instant PDF ticket generation.",
     problem:
-      "Travel agencies in emerging markets suffer from sluggish WordPress portals with poor mobile performance, resulting in high bounce rates and untracked customer inquiries.",
+      "Luxury travel agencies in South Asia rely on fragmented WhatsApp messaging and slow email threads, leading to dropped bookings and customer confusion during peak holiday seasons.",
     solution:
-      "Developed an editorial luxury Next.js 14 application featuring optimized edge-rendered travel packages, dynamic search filters, and single-click WhatsApp inquiry deep-links.",
+      "Engineered an editorial web portal utilizing Next.js 14 App Router, dynamic currency conversion, server actions, and automated PDF itinerary dispatch with responsive design.",
     result:
-      "Achieved a 99/100 Google Lighthouse score and instant inquiry dispatch to agency agents.",
-    stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel Edge"],
+      "Increased inbound international booking requests by 65% with sub-100ms page transitions across global networks.",
+    stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "PostgreSQL", "Prisma"],
     highlights: [
-      "Lighthouse 99/100 Core Web Vitals score on mobile 4G networks",
-      "Single-click custom WhatsApp booking payload generators",
-      "Dynamic itinerary builder with interactive interactive day-by-day itineraries",
-      "Structured JSON-LD schema boosting regional Google Search indexing",
+      "Dynamic multi-currency exchange conversion with live rate feeds",
+      "Interactive editorial itinerary customizer with photo galleries",
+      "Automated PDF boarding pass and voucher generator",
+      "WhatsApp concierge direct deep-linking with pre-filled package meta",
     ],
-    role: "Full-Stack Web Architect",
+    role: "Lead Fullstack Developer",
     status: "Live Platform",
-    metrics: "Lighthouse 99 · 2.1x Engagement · Sub-800ms FCP",
+    metrics: "Sub-100ms TTFB · 65% Conversion Lift · 4K+ Bookings",
     coverImage: "/images/projects/travel.svg",
     cover: "/images/projects/travel.svg",
     mockupType: "browser",
@@ -385,78 +350,393 @@ export const defaultProjects: ProjectData[] = [
     githubUrl: "https://github.com/naimsmahmud50-dotcom/Travel-With-Maijrun",
     link: "https://github.com/naimsmahmud50-dotcom/Travel-With-Maijrun",
     featured: true,
+    order: 4,
+  },
+  {
+    id: "5",
+    slug: "arabic-language-club",
+    title: "Arabic Language & Culture Club",
+    subtitle: "Interactive Linguistic Academy & Student Community",
+    year: "2023",
+    category: "web",
+    filterCategory: "web",
+    summary:
+      "A dedicated learning management platform and cultural hub built for modern Arabic language education. Features structured audio-visual modules, grammar practice workbooks, real-time quizzes, and student community discussion forums.",
+    problem:
+      "Students seeking Quranic and modern standard Arabic proficiency lacked a centralized, beautifully designed digital academy with structured multimedia lesson tracking.",
+    solution:
+      "Built a modular learning portal with Next.js, interactive vocabulary flashcards, audio pronunciation playback, and automated progress report cards.",
+    result:
+      "Over 1,200 active students enrolled with 88% course completion rates and active peer study groups.",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL"],
+    highlights: [
+      "Interactive Arabic grammar workbooks with right-to-left (RTL) typography",
+      "Native audio pronunciation playback with speech comparison widgets",
+      "Automated lesson progression unlocking and certificate generation",
+      "Moderated student discussion forum with rich text capabilities",
+    ],
+    role: "Fullstack Developer & UI Designer",
+    status: "Live Platform",
+    metrics: "1,200+ Active Students · 88% Completion · RTL Native",
+    coverImage: "/images/projects/arabic.svg",
+    cover: "/images/projects/arabic.svg",
+    mockupType: "browser",
+    demoUrl: "https://github.com/naimsmahmud50-dotcom/Arabic-Langualge-and-Cultural-Club",
+    githubUrl: "https://github.com/naimsmahmud50-dotcom/Arabic-Langualge-and-Cultural-Club",
+    link: "https://github.com/naimsmahmud50-dotcom/Arabic-Langualge-and-Cultural-Club",
+    featured: true,
     order: 5,
   },
   {
     id: "6",
-    slug: "b2b-lead-prospector",
-    title: "B2B Lead Prospecting Engine",
-    subtitle: "High-Volume Business Intelligence Scraper",
-    year: "2024",
-    category: "ai",
-    filterCategory: "automation",
+    slug: "student-life-circle",
+    title: "Student Life Circle",
+    subtitle: "Academic Collaboration & Skill Development Network",
+    year: "2023",
+    category: "web",
+    filterCategory: "web",
     summary:
-      "Distributed asynchronous data extraction crawler. Aggregates and verifies high-intent business decision-makers from public web directories, corporate registries, and social profiles with automated SMTP MX verification.",
+      "An educational networking ecosystem connecting university and college students across Bangladesh. Provides peer-to-peer mentoring, curated technical workshops, open-source project matching, and career preparation materials.",
     problem:
-      "Outbound marketing agencies burn thousands on data providers that supply stale, unverified email lists with bounce rates exceeding 25%.",
+      "Young developers and students frequently lack structured mentorship, study circles, and guidance on how to transition from academic theory into production software engineering.",
     solution:
-      "Constructed a multi-threaded Python/Node.js web extraction cluster utilizing rotating proxies, automated headless browser parsers, and real-time DNS MX record verification to compile verified prospect profiles.",
+      "Developed a responsive community platform with user profiles, event booking calendars, resource repositories, and workshop registration pipelines.",
     result:
-      "Supplied over 50,000 verified decision-maker records with a measured bounce rate under 2.4%.",
-    stack: ["Python", "Playwright", "FastAPI", "MongoDB", "Docker", "RabbitMQ"],
+      "Fostered a network of 2,500+ student members across multiple campuses with 40+ completed workshops.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Express.js", "MongoDB", "Vercel"],
     highlights: [
-      "Zero-detection stealth browser fingerprint spoofing",
-      "Real-time SMTP handshake verification eliminating invalid corporate emails",
-      "Automated CSV export pipeline with custom CRM field mapping",
-      "Distributed task queuing scaling horizontally across multi-node servers",
+      "Student portfolio directory with verified project showcases",
+      "Automated event registration system with QR-code ticket delivery",
+      "Categorized engineering study resources and career roadmaps",
+      "Interactive leaderboard and mentor-pairing request system",
     ],
-    role: "Data Infrastructure Engineer",
-    status: "Production",
-    metrics: "<2.4% Bounce Rate · 50k+ Verified Leads Extracted",
-    coverImage: "/images/projects/scraper.svg",
-    cover: "/images/projects/scraper.svg",
-    mockupType: "terminal",
-    demoUrl: "https://example.com/lead-demo",
-    githubUrl: "https://github.com/naimsmahmud50-dotcom/B2B-Lead-Scraper",
-    link: "https://github.com/naimsmahmud50-dotcom/B2B-Lead-Scraper",
-    featured: false,
+    role: "Platform Architect & Community Lead",
+    status: "Live Platform",
+    metrics: "2,500+ Members · 40+ Tech Workshops · 5 Campus Chapters",
+    coverImage: "/images/projects/student.svg",
+    cover: "/images/projects/student.svg",
+    mockupType: "browser",
+    demoUrl: "https://github.com/naimsmahmud50-dotcom/Maijrun-Teach",
+    githubUrl: "https://github.com/naimsmahmud50-dotcom/Maijrun-Teach",
+    link: "https://github.com/naimsmahmud50-dotcom/Maijrun-Teach",
+    featured: true,
     order: 6,
   },
   {
     id: "7",
-    slug: "hifz-tracker-pro",
-    title: "Hifz Milestone Tracker",
-    subtitle: "Offline-First Quran Memorization Android Utility",
+    slug: "facebook-automation",
+    title: "Facebook & Social Commerce Automation",
+    subtitle: "High-Throughput Social Selling & Lead Generation Suite",
     year: "2024",
-    category: "android",
-    filterCategory: "android",
+    category: "ai",
+    filterCategory: "automation",
     summary:
-      "Specialized offline-first mobile application designed specifically for Islamic scholars and students tracking Quran memorization (Hifz). Features Surah and Ayah precision checklists, audio revision markers, and automatic local SQLite backup.",
+      "An enterprise Meta Graph API automation suite designed for high-volume social commerce. Automatically monitors public page interactions, classifies customer buying intent in real-time, dispatches personalized direct messages, and routes qualified leads directly to CRM.",
     problem:
-      "Quran memorization students and teachers struggle with retaining historical revision logs, frequently forgetting previous mistakes without accurate historical notes.",
+      "E-commerce brands lose up to 40% of interested buyers when customer queries on Facebook comments and direct messages go unanswered during off-peak hours.",
     solution:
-      "Created an intuitive Flutter mobile utility utilizing an offline-first SQLite database that allows students and mentors to log daily recitation accuracy with single-tap precision.",
+      "Architected an event-driven webhook ingestion pipeline connected to the Meta Graph API with sub-second automated comment resolution and WhatsApp handoff.",
     result:
-      "Adopted by 500+ active students with 100% offline reliability in remote madrasah campuses.",
-    stack: ["Flutter", "Dart", "SQLite", "Provider", "Local Notifications"],
+      "Handled 50,000+ customer inquiries monthly with a 99.4% automated resolution rate and zero ban flags.",
+    stack: ["Meta Graph API", "Python", "Node.js", "Redis", "PostgreSQL", "FastAPI"],
     highlights: [
-      "100% offline operability with zero internet connectivity required",
-      "Complete 114 Surah index with accurate Ayah milestone tracking",
-      "Daily revision schedule reminders and streak tracking",
-      "Automated encrypted SQLite local database export & restore",
+      "Sub-second Facebook post comment reply and instant DM trigger",
+      "Natural language intent parser identifying buying interest vs spam",
+      "Anti-ban randomized delay jitter mimicking human typing speed",
+      "Automated synchronization with Google Sheets, Airtable, and CRM",
     ],
-    role: "Mobile App Developer",
-    status: "Active Release",
-    metrics: "500+ Active Users · 100% Offline Reliability",
-    coverImage: "/images/projects/student.svg",
-    cover: "/images/projects/student.svg",
-    mockupType: "mobile",
-    demoUrl: "https://example.com/hifz-demo",
-    githubUrl: "https://github.com/naimsmahmud50-dotcom/Hifz-Milestone-Tracker",
-    link: "https://github.com/naimsmahmud50-dotcom/Hifz-Milestone-Tracker",
-    featured: false,
+    role: "Automation Architect",
+    status: "Production",
+    metrics: "50K+ Inquiries/Mo · < 1s Auto-Reply · 0 Ban Flags",
+    coverImage: "/images/projects/facebook.svg",
+    cover: "/images/projects/facebook.svg",
+    mockupType: "browser",
+    demoUrl: "https://github.com/naimsmahmud50-dotcom/Facebook-Automation-",
+    githubUrl: "https://github.com/naimsmahmud50-dotcom/Facebook-Automation-",
+    link: "https://github.com/naimsmahmud50-dotcom/Facebook-Automation-",
+    featured: true,
     order: 7,
   },
+  {
+    id: "8",
+    slug: "autonomous-linkedin-lead-outreach-engine",
+    title: "Autonomous LinkedIn Lead & Outreach Engine",
+    subtitle: "Autonomous B2B Lead Scraping, AI Enrichment & Anti-Ban Cold Outreach Pipeline",
+    year: "2026",
+    category: "ai",
+    filterCategory: "automation",
+    summary:
+      "An enterprise-grade autonomous LinkedIn prospecting engine engineered to discover high-value B2B decision-makers, enrich contact metadata using AI, and execute personalized multi-touch cold outreach sequences without triggering platform rate-limits.",
+    problem:
+      "Manual B2B prospecting on LinkedIn requires hundreds of hours per week, yields poor conversion with generic copy, and third-party cloud tools routinely trigger LinkedIn's aggressive bot-detection algorithms, resulting in restricted accounts or shadow-bans.",
+    solution:
+      "Architected a resilient distributed scraper using headless browsers with stealth plugins, randomized humanized mouse kinematics, and rotating residential proxies. Built an integrated LLM pipeline that analyzes a lead's recent posts to generate 100% unique hyper-personalized connection icebreakers, syncing verified data straight into HubSpot CRM.",
+    result:
+      "Eliminated manual prospecting overhead, extracting 12,000+ enriched decision-makers monthly with zero account bans and a 42% connection acceptance rate.",
+    stack: [
+      "Python",
+      "Playwright / Puppeteer",
+      "OpenAI API (GPT-4o)",
+      "Redis Task Queue",
+      "PostgreSQL",
+      "Webhooks (CRM Sync)",
+      "Docker",
+    ],
+    highlights: [
+      "Stealth Anti-Detection Engine with randomized human kinematics",
+      "Dynamic Post & Profile AI Analysis for custom icebreakers",
+      "Multi-Step Follow-Up Sequence Engine with rate pacing",
+      "Instant Telegram & CRM Webhook Alerts on lead replies",
+    ],
+    role: "Lead Architect",
+    status: "Production",
+    metrics: "Zero-Ban Architecture · 12K+ Leads/Mo · 42% Acceptance",
+    coverImage: "/images/projects/linkedin-automation.jpg",
+    cover: "/images/projects/linkedin-automation.jpg",
+    mockupType: "browser",
+    demoUrl: "https://github.com/naimsmahmud50-dotcom/Autonomous-LinkedIn-Lead-Engine",
+    githubUrl: "https://github.com/naimsmahmud50-dotcom/Autonomous-LinkedIn-Lead-Engine",
+    link: "https://github.com/naimsmahmud50-dotcom/Autonomous-LinkedIn-Lead-Engine",
+    featured: true,
+    order: 8,
+  },
+];
+
+export const defaultServices: ServiceData[] = [
+  {
+    id: "s1",
+    num: "01",
+    title: "AI Automation",
+    titleEn: "AI Automation",
+    titleBn: "এআই অটোমেশন",
+    description:
+      "Architecting self-healing enterprise workflow automation, multi-channel client acquisition pipelines, CRM synchronizations, and data extraction engines that eliminate manual operational bottlenecks.",
+    descriptionEn:
+      "Architecting self-healing enterprise workflow automation, multi-channel client acquisition pipelines, CRM synchronizations, and data extraction engines that eliminate manual operational bottlenecks.",
+    descriptionBn:
+      "স্বয়ংক্রিয় এন্টারপ্রাইজ ওয়ার্কফ্লো, মাল্টি-চ্যানেল ক্লায়েন্ট একুইজিশন পাইপলাইন, সিআরএম ডাটা সিঙ্ক এবং ডাটা এক্সট্রাকশন ইঞ্জিন যা ব্যবসার ম্যানুয়াল কাজ পুরোপুরি দূর করে।",
+    deliverables: ["n8n / Make Pipelines", "Lead Generation Graphs", "Automated Outbound", "Data Scraping Engine"],
+    icon: "Cpu",
+    order: 1,
+  },
+  {
+    id: "s2",
+    num: "02",
+    title: "Web App Development",
+    titleEn: "Web App Development",
+    titleBn: "ওয়েব অ্যাপ ডেভেলপমেন্ট",
+    description:
+      "Engineering robust, scalable full-stack web applications with Next.js 14 App Router, TypeScript, NestJS microservices, event-driven backends, and high-concurrency PostgreSQL databases.",
+    descriptionEn:
+      "Engineering robust, scalable full-stack web applications with Next.js 14 App Router, TypeScript, NestJS microservices, event-driven backends, and high-concurrency PostgreSQL databases.",
+    descriptionBn:
+      "নেক্সট.জেএস ১৪ অ্যাপ রাউটার, টাইপস্ক্রিপ্ট, নেস্ট.জেএস মাইক্রোসার্ভিস এবং পোস্টগ্রেসকিউএল ডাটাবেসের সমন্বয়ে উচ্চগতির সুরক্ষিত ফুল-স্ট্যাক ওয়েব অ্যাপ্লিকেশন নির্মাণ।",
+    deliverables: ["Next.js 14 Applications", "NestJS Microservices", "PostgreSQL Architectures", "Secure REST & GraphQL APIs"],
+    icon: "Layout",
+    order: 2,
+  },
+  {
+    id: "s3",
+    num: "03",
+    title: "Android App Development",
+    titleEn: "Android App Development",
+    titleBn: "অ্যান্ড্রয়েড অ্যাপ ডেভেলপমেন্ট",
+    description:
+      "Developing high-craft, native-grade Flutter Android applications featuring offline-first local SQLite caching, real-time push notification infrastructure, and streamlined Play Store deployment.",
+    descriptionEn:
+      "Developing high-craft, native-grade Flutter Android applications featuring offline-first local SQLite caching, real-time push notification infrastructure, and streamlined Play Store deployment.",
+    descriptionBn:
+      "ফ্লাটার দিয়ে নেটিভ পারফরম্যান্স সম্পন্ন অ্যান্ড্রয়েড অ্যাপ তৈরি, যার মধ্যে রয়েছে অফলাইন-ফার্স্ট এসকিউলাইট ক্যাশ, রিয়েল-টাইম পুশ নোটিফিকেশন এবং প্লে স্টোর পাবলিশিং।",
+    deliverables: ["Cross-Platform Flutter Apps", "Offline-First Local Sync", "Hardware & Sensor Integration", "Play Store CI/CD Pipelines"],
+    icon: "Smartphone",
+    order: 3,
+  },
+  {
+    id: "s4",
+    num: "04",
+    title: "Website Development",
+    titleEn: "Website Development",
+    titleBn: "ওয়েবসাইট ডেভেলপমেন্ট",
+    description:
+      "Crafting world-class, luxury agency-grade digital experiences, bespoke portfolios, and editorial landing pages engineered with GSAP, Lenis smooth scrolling, and cinematic interaction design.",
+    descriptionEn:
+      "Crafting world-class, luxury agency-grade digital experiences, bespoke portfolios, and editorial landing pages engineered with GSAP, Lenis smooth scrolling, and cinematic interaction design.",
+    descriptionBn:
+      "আন্তর্জাতিক মানের প্রিমিয়াম ওয়েবসাইট ও পোর্টফোলিও তৈরি—GSAP ScrollTrigger, Lenis স্মুথ স্ক্রোল এবং ডেনিস স্নিলেনবার্গ-স্টাইলের ৬০এফপিএস ইন্টারঅ্যাকশন সমৃদ্ধ।",
+    deliverables: ["Award-Winning Web Experiences", "Lenis + GSAP Motion Systems", "Headless CMS Solutions", "Responsive Design Systems"],
+    icon: "Globe",
+    order: 4,
+  },
+  {
+    id: "s5",
+    num: "05",
+    title: "Facebook Automation",
+    titleEn: "Facebook Automation",
+    titleBn: "ফেসবুক অটোমেশন",
+    description:
+      "Building enterprise Meta Graph API automation tools, automated real-time Facebook page moderation systems, customer inquiry routing bots, and targeted ad campaign lead-capture pipelines.",
+    descriptionEn:
+      "Building enterprise Meta Graph API automation tools, automated real-time Facebook page moderation systems, customer inquiry routing bots, and targeted ad campaign lead-capture pipelines.",
+    descriptionBn:
+      "মেটা গ্রাফ এপিআই ইন্টিগ্রেশন, ফেসবুক পেজের পোস্ট কমেন্টে অটো-রিপ্লাই, মেসেঞ্জার লিড কনভার্সন এবং স্বয়ংক্রিয় কাস্টমার সাপোর্ট বট তৈরি।",
+    deliverables: ["Meta Graph API Integrations", "Auto-Moderation Bots", "Messenger Lead Workflows", "Campaign Data Analytics"],
+    icon: "Share2",
+    order: 5,
+  },
+  {
+    id: "s6",
+    num: "06",
+    title: "AI Agents",
+    titleEn: "AI Agents",
+    titleBn: "এআই এজেন্টস",
+    description:
+      "Deploying intelligent multi-agent swarms with LangChain, Claude & OpenAI APIs, tool calling, recursive problem solving, stateful memory graphs, and automated headless browser executors.",
+    descriptionEn:
+      "Deploying intelligent multi-agent swarms with LangChain, Claude & OpenAI APIs, tool calling, recursive problem solving, stateful memory graphs, and automated headless browser executors.",
+    descriptionBn:
+      "ল্যাংচেন, ক্লদ ও ওপেনএআই ভিত্তিক স্বায়ত্তশাসিত মাল্টি-এজেন্ট সিস্টেম তৈরি, যা স্বয়ংক্রিয় ব্রাউজার নিয়ন্ত্রণ ও মেমোরি গ্রাফের মাধ্যমে জটিল কাজ নিজে নিজেই সমাধান করে।",
+    deliverables: ["LangChain Multi-Agent Swarms", "Browser-Automated Workers", "Context-Aware Research Agents", "RAG & Knowledge Retrieval"],
+    icon: "Bot",
+    order: 6,
+  },
+];
+
+export const defaultTestimonials: TestimonialData[] = [
+  {
+    id: "t1",
+    author: "Madrasah Ecosystem Partner",
+    role: "Education Administration",
+    company: "Institutional Network",
+    badge: "Institutional Network",
+    quoteEn:
+      "Mahmud brought an unmatched level of technical precision to our Madrasah platform. What used to take days of manual paper tracking is now handled seamlessly via Flutter and automated WhatsApp notifications.",
+    quoteBn:
+      "মাহমুদ আমাদের মাদরাসা ম্যানেজমেন্ট প্ল্যাটফর্মে অসাধারণ নিখুঁত কাজ উপহার দিয়েছেন। আগে যেখানে কাগজের রেজিস্টারে দিন পার হতো, এখন তা ফ্লাটার ও স্বয়ংক্রিয় হোয়াটসঅ্যাপ নোটিফিকেশনে নিমেষেই সম্পন্ন হচ্ছে।",
+    quote:
+      "Mahmud brought an unmatched level of technical precision to our Madrasah platform. What used to take days of manual paper tracking is now handled seamlessly via Flutter and automated WhatsApp notifications.",
+    order: 1,
+  },
+  {
+    id: "t2",
+    author: "B2B Outbound Director",
+    role: "AI Workflow Client",
+    company: "Enterprise Outreach Group",
+    badge: "Enterprise Outreach Group",
+    quoteEn:
+      "The autonomous prospecting engine Mahmud designed completely transformed how we identify and qualify enterprise prospects. It operates 24/7 with zero maintenance downtime.",
+    quoteBn:
+      "মাহমুদের ডিজাইন করা অটোনোমাস প্রস্পেক্টিং ইঞ্জিন আমাদের ক্লায়েন্ট খোঁজার পদ্ধতিকে পুরোপুরি পরিবর্তন করেছে। এটি কোনো ঝামেলা ছাড়াই ২৪/৭ স্বয়ংক্রিয়ভাবে কাজ করে যাচ্ছে।",
+    quote:
+      "The autonomous prospecting engine Mahmud designed completely transformed how we identify and qualify enterprise prospects. It operates 24/7 with zero maintenance downtime.",
+    order: 2,
+  },
+  {
+    id: "t3",
+    author: "Maijrun Concierge Lead",
+    role: "Travel Operations",
+    company: "Travel with Maijrun",
+    badge: "Travel with Maijrun",
+    quoteEn:
+      "Travel with Maijrun's web application immediately elevated our brand authority. The speed, editorial typography, and mobile booking concierge resulted in an instant conversion jump.",
+    quoteBn:
+      "ট্রাভেল উইথ মাইজরুন ওয়েব প্ল্যাটফর্মটি আমাদের ব্রান্ডের গ্রহণযোগ্যতা বহুগুণ বাড়িয়ে দিয়েছে। সাইটের সুপারফাস্ট গতি ও এডিটোরিয়াল ডিজাইন বুকিং কনভার্সন এক লাফে দ্বিগুণ করেছে।",
+    quote:
+      "Travel with Maijrun's web application immediately elevated our brand authority. The speed, editorial typography, and mobile booking concierge resulted in an instant conversion jump.",
+    order: 3,
+  },
+];
+
+export const defaultExperiences: ExperienceData[] = [
+  {
+    id: "e1",
+    period: "2026",
+    year: "2026",
+    roleEn: "AI Automation Architect & Independent Consultant",
+    roleBn: "এআই অটোমেশন আর্কিটেক্ট ও স্বাধীন সফটওয়্যার কনসালটেন্ট",
+    company: "Independent Studio",
+    phase: "Independent Studio",
+    title: "AI Automation Architect & Independent Consultant",
+    location: "Dhaka, Bangladesh",
+    descriptionEn:
+      "Designing bespoke multi-agent workflows, autonomous enterprise scraping engines, and international Next.js web applications with physics-driven editorial UI.",
+    descriptionBn:
+      "আন্তর্জাতিক ক্লায়েন্টদের জন্য মাল্টি-এজেন্ট অটোনোমাস ওয়ার্কফ্লো, ডাটা স্ক্র্যাপিং ইঞ্জিন এবং ৬০এফপিএস মোশন সম্পন্ন নেক্সট.জেএস ওয়েব প্ল্যাটফর্ম আর্কিটেক্ট করা।",
+    detail:
+      "Designing bespoke multi-agent workflows, autonomous enterprise scraping engines, and international Next.js web applications with physics-driven editorial UI.",
+    technologies: ["Next.js 15", "LangChain", "Playwright", "NestJS", "PostgreSQL"],
+    order: 1,
+  },
+  {
+    id: "e2",
+    period: "2025",
+    year: "2025",
+    roleEn: "Autonomous Swarms & Meta-Commerce Automation",
+    roleBn: "অটোনোমাস সোয়ার্মস ও মেটা-কমার্স অটোমেশন",
+    company: "B2B & Social Automation Ventures",
+    phase: "B2B & Social Automation Ventures",
+    title: "Autonomous Swarms & Meta-Commerce Automation",
+    location: "Dhaka, Bangladesh",
+    descriptionEn:
+      "Built custom social commerce bots managing thousands of automated buyer conversations, alongside high-precision lead scrapers.",
+    descriptionBn:
+      "হাজারো ক্রেতার কথোপকথন স্বয়ংক্রিয়ভাবে পরিচালনার জন্য কাস্টম সোশ্যাল কমার্স বট ও হাই-প্রিসিশন ডাটা স্ক্র্যাপার তৈরি।",
+    detail:
+      "Built custom social commerce bots managing thousands of automated buyer conversations, alongside high-precision lead scrapers.",
+    technologies: ["Python", "Meta Graph API", "Redis", "FastAPI", "Docker"],
+    order: 2,
+  },
+  {
+    id: "e3",
+    period: "2024",
+    year: "2024",
+    roleEn: "Madrasah Ecosystem Deployment & Systems Security",
+    roleBn: "মাদরাসা ইকোসিস্টেম ডেপ্লয়মেন্ট ও সিস্টেম সিকিউরিটি",
+    company: "EdTech & Endpoint Security",
+    phase: "EdTech & Endpoint Security",
+    title: "Madrasah Ecosystem Deployment & Systems Security",
+    location: "Dhaka, Bangladesh",
+    descriptionEn:
+      "Rolled out the Madrasah Management Ecosystem across 15+ institutions, serving 3,500+ active students with offline-sync Android apps and endpoint hardware monitoring.",
+    descriptionBn:
+      "১৫টির বেশি প্রতিষ্ঠানে মাদরাসা ম্যানেজমেন্ট সিস্টেম সফলভাবে পরিচালনা, যেখানে ৩,৫০০+ ছাত্রছাত্রী ফ্লাটার অ্যাপ ও এন্ডপয়েন্ট সিকিউরিটি মনিটরের মাধ্যমে যুক্ত।",
+    detail:
+      "Rolled out the Madrasah Management Ecosystem across 15+ institutions, serving 3,500+ active students with offline-sync Android apps and endpoint hardware monitoring.",
+    technologies: ["Flutter", "Dart", "Rust / Tauri", "C# / .NET", "PostgreSQL"],
+    order: 3,
+  },
+];
+
+export const defaultSkills: SkillItem[] = [
+  { id: "sk1", name: "Multi-Agent Swarm Orchestration", category: "AI & Automation", level: "Expert", featured: true, order: 1 },
+  { id: "sk2", name: "LangChain & LangGraph Workflows", category: "AI & Automation", level: "Expert", featured: true, order: 2 },
+  { id: "sk3", name: "Playwright Headless Automation", category: "AI & Automation", level: "Expert", featured: true, order: 3 },
+  { id: "sk4", name: "LLM Tool Calling & Function Binding", category: "AI & Automation", level: "Expert", featured: true, order: 4 },
+  { id: "sk5", name: "Retrieval-Augmented Generation (RAG)", category: "AI & Automation", level: "Expert", featured: true, order: 5 },
+  { id: "sk6", name: "Automated Lead & Data Extraction", category: "AI & Automation", level: "Expert", featured: true, order: 6 },
+  { id: "sk7", name: "Next.js 14/15 App Router", category: "Web Architecture", level: "Expert", featured: true, order: 7 },
+  { id: "sk8", name: "TypeScript (Strict Typing)", category: "Web Architecture", level: "Expert", featured: true, order: 8 },
+  { id: "sk9", name: "React Server Components (RSC)", category: "Web Architecture", level: "Expert", featured: true, order: 9 },
+  { id: "sk10", name: "Tailwind CSS & Token Architecture", category: "Web Architecture", level: "Expert", featured: true, order: 10 },
+  { id: "sk11", name: "Framer Motion & GSAP ScrollTrigger", category: "Web Architecture", level: "Expert", featured: false, order: 11 },
+  { id: "sk12", name: "Lenis Smooth Inertial Scrolling", category: "Web Architecture", level: "Expert", featured: false, order: 12 },
+  { id: "sk13", name: "Responsive & Accessible UI/UX", category: "Web Architecture", level: "Expert", featured: false, order: 13 },
+  { id: "sk14", name: "Flutter Cross-Platform Architecture", category: "Mobile Engineering", level: "Expert", featured: true, order: 14 },
+  { id: "sk15", name: "Offline-First SQLite / Hive Caching", category: "Mobile Engineering", level: "Expert", featured: true, order: 15 },
+  { id: "sk16", name: "Riverpod & BLoC State Management", category: "Mobile Engineering", level: "Expert", featured: false, order: 16 },
+  { id: "sk17", name: "Native Hardware & Camera Sensor APIs", category: "Mobile Engineering", level: "Expert", featured: false, order: 17 },
+  { id: "sk18", name: "Background Daemons & Push Alerts", category: "Mobile Engineering", level: "Expert", featured: false, order: 18 },
+  { id: "sk19", name: "Node.js & NestJS Microservices", category: "Cloud & DevOps", level: "Expert", featured: true, order: 19 },
+  { id: "sk20", name: "PostgreSQL & Prisma ORM", category: "Cloud & DevOps", level: "Expert", featured: true, order: 20 },
+  { id: "sk21", name: "Supabase Database Architecture", category: "Cloud & DevOps", level: "Expert", featured: false, order: 21 },
+  { id: "sk22", name: "Redis Caching & Sliding Rate Limits", category: "Cloud & DevOps", level: "Expert", featured: false, order: 22 },
+  { id: "sk23", name: "RESTful API & Webhook Design", category: "Cloud & DevOps", level: "Expert", featured: false, order: 23 },
+  { id: "sk24", name: "Secure Server Actions & Auth", category: "Cloud & DevOps", level: "Expert", featured: false, order: 24 },
+  { id: "sk25", name: "Linux Server Administration", category: "Core Tools", level: "Expert", featured: false, order: 25 },
+  { id: "sk26", name: "Docker Containerization", category: "Core Tools", level: "Expert", featured: false, order: 26 },
+  { id: "sk27", name: "Git & GitHub Workflows", category: "Core Tools", level: "Expert", featured: false, order: 27 },
+  { id: "sk28", name: "Postman API Testing", category: "Core Tools", level: "Expert", featured: false, order: 28 },
+  { id: "sk29", name: "Vercel & Cloudflare Deployment", category: "Core Tools", level: "Expert", featured: false, order: 29 },
+  { id: "sk30", name: "VS Code & JetBrains IDE Suite", category: "Core Tools", level: "Expert", featured: false, order: 30 },
 ];
 
 // ============================================================================
@@ -543,7 +823,7 @@ export async function getProjects(): Promise<ProjectData[]> {
         const rows = await prisma.project.findMany({
           orderBy: { order: "asc" },
         });
-        if (!rows || rows.length === 0) return [];
+        if (!rows || rows.length === 0) return defaultProjects;
 
         return rows.map((r): ProjectData => {
           let stack: string[] = [];
@@ -569,6 +849,7 @@ export async function getProjects(): Promise<ProjectData[]> {
           }
 
           const link = r.githubUrl || r.demoUrl || "#";
+          const cover = r.coverImage || "/images/projects/madrasah.svg";
 
           return {
             id: r.id,
@@ -587,8 +868,8 @@ export async function getProjects(): Promise<ProjectData[]> {
             role: r.role,
             status: r.status,
             metrics: r.metrics,
-            coverImage: r.coverImage,
-            cover: r.coverImage,
+            coverImage: cover,
+            cover: cover,
             mockupType: (r.mockupType as "browser" | "mobile" | "terminal") || "browser",
             demoUrl: r.demoUrl,
             githubUrl: r.githubUrl,
@@ -601,10 +882,11 @@ export async function getProjects(): Promise<ProjectData[]> {
       ["all-projects"],
       { revalidate: 5, tags: ["projects"] }
     );
-    return await fn();
+    const result = await fn();
+    return result && result.length > 0 ? result : defaultProjects;
   } catch (err) {
     console.error("getProjects DB fallback error:", err);
-    return [];
+    return defaultProjects;
   }
 }
 
@@ -620,7 +902,7 @@ export async function getServices(): Promise<ServiceData[]> {
         const rows = await prisma.service.findMany({
           orderBy: { order: "asc" },
         });
-        if (!rows || rows.length === 0) return [];
+        if (!rows || rows.length === 0) return defaultServices;
 
         return rows.map((s, idx): ServiceData => {
           let deliverables: string[] = [];
@@ -648,10 +930,11 @@ export async function getServices(): Promise<ServiceData[]> {
       ["all-services"],
       { revalidate: 5, tags: ["services"] }
     );
-    return await fn();
+    const result = await fn();
+    return result && result.length > 0 ? result : defaultServices;
   } catch (err) {
     console.error("getServices DB fallback error:", err);
-    return [];
+    return defaultServices;
   }
 }
 
@@ -662,7 +945,7 @@ export async function getTestimonials(): Promise<TestimonialData[]> {
         const rows = await prisma.testimonial.findMany({
           orderBy: { order: "asc" },
         });
-        if (!rows || rows.length === 0) return [];
+        if (!rows || rows.length === 0) return defaultTestimonials;
 
         return rows.map((t): TestimonialData => ({
           id: t.id,
@@ -680,10 +963,11 @@ export async function getTestimonials(): Promise<TestimonialData[]> {
       ["all-testimonials"],
       { revalidate: 5, tags: ["testimonials"] }
     );
-    return await fn();
+    const result = await fn();
+    return result && result.length > 0 ? result : defaultTestimonials;
   } catch (err) {
     console.error("getTestimonials DB fallback error:", err);
-    return [];
+    return defaultTestimonials;
   }
 }
 
@@ -694,7 +978,7 @@ export async function getExperiences(): Promise<ExperienceData[]> {
         const rows = await prisma.experience.findMany({
           orderBy: { order: "asc" },
         });
-        if (!rows || rows.length === 0) return [];
+        if (!rows || rows.length === 0) return defaultExperiences;
 
         return rows.map((e): ExperienceData => {
           let technologies: string[] = [];
@@ -724,10 +1008,11 @@ export async function getExperiences(): Promise<ExperienceData[]> {
       ["all-experiences"],
       { revalidate: 5, tags: ["experiences"] }
     );
-    return await fn();
+    const result = await fn();
+    return result && result.length > 0 ? result : defaultExperiences;
   } catch (err) {
     console.error("getExperiences DB fallback error:", err);
-    return [];
+    return defaultExperiences;
   }
 }
 
@@ -738,15 +1023,17 @@ export async function getSkills(): Promise<SkillItem[]> {
         const rows = await prisma.skill.findMany({
           orderBy: { order: "asc" },
         });
+        if (!rows || rows.length === 0) return defaultSkills;
         return rows;
       },
       ["all-skills"],
       { revalidate: 5, tags: ["skills"] }
     );
-    return await fn();
+    const result = await fn();
+    return result && result.length > 0 ? result : defaultSkills;
   } catch (err) {
     console.error("getSkills DB fallback error:", err);
-    return [];
+    return defaultSkills;
   }
 }
 

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useSpring, useMotionValue } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import type { ProjectData } from "@/lib/data";
+import { defaultProjects, type ProjectData } from "@/lib/data";
 import MagneticWrapper from "@/components/MagneticWrapper";
 import { usePageTransition, usePreloader } from "@/context/TransitionContext";
 
@@ -18,7 +18,7 @@ const filterOptions: { label: string; value: FilterCategory }[] = [
 ];
 
 interface WorkPageClientProps {
-  initialProjects: ProjectData[];
+  initialProjects?: ProjectData[];
 }
 
 export default function WorkPageClient({ initialProjects }: WorkPageClientProps) {
@@ -27,7 +27,10 @@ export default function WorkPageClient({ initialProjects }: WorkPageClientProps)
   const [filter, setFilter] = useState<FilterCategory>("all");
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
-  const projects = initialProjects || [];
+  const projects =
+    initialProjects && initialProjects.length > 0
+      ? initialProjects
+      : defaultProjects;
 
   // Filter projects based on active selection
   const filteredProjects = projects.filter((p) => {
@@ -218,10 +221,21 @@ export default function WorkPageClient({ initialProjects }: WorkPageClientProps)
                   onClick={(e) => handleRowClick(e, proj.slug)}
                   className="group py-8 sm:py-12 md:py-14 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-400 cursor-pointer"
                 >
-                  {/* Left: Project Title (Stays --text on hover, shifts ~20px) */}
-                  <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-normal tracking-tight text-text transition-transform duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:translate-x-5">
-                    {proj.title}
-                  </h2>
+                  {/* Left: Project Title & Mobile Thumbnail */}
+                  <div className="flex items-center gap-4 sm:gap-6">
+                    <div className="relative w-14 h-11 sm:w-16 sm:h-12 rounded-lg overflow-hidden border border-line shrink-0 lg:hidden bg-surface">
+                      <Image
+                        src={proj.cover}
+                        alt={proj.title}
+                        fill
+                        sizes="64px"
+                        className="object-cover"
+                      />
+                    </div>
+                    <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-normal tracking-tight text-text transition-transform duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] lg:group-hover:translate-x-5">
+                      {proj.title}
+                    </h2>
+                  </div>
 
                   {/* Right: Category + Year & Mobile Indicator */}
                   <div className="flex items-center gap-6 text-xs sm:text-sm font-mono text-muted uppercase tracking-wider">

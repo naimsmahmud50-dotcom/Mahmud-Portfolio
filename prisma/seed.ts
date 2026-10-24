@@ -446,6 +446,47 @@ async function main() {
       featured: true,
       order: 7,
     },
+    {
+      slug: "autonomous-linkedin-lead-outreach-engine",
+      title: "Autonomous LinkedIn Lead & Outreach Engine",
+      subtitle:
+        "Autonomous B2B Lead Scraping, AI Enrichment & Anti-Ban Cold Outreach Pipeline",
+      year: "2026",
+      category: "AI & Workflow Automation",
+      filterCategory: "automation",
+      summary:
+        "An enterprise-grade autonomous LinkedIn prospecting engine engineered to discover high-value B2B decision-makers, enrich contact metadata using AI, and execute personalized multi-touch cold outreach sequences without triggering platform rate-limits.",
+      problem:
+        "Manual B2B prospecting on LinkedIn requires hundreds of hours per week, yields poor conversion with generic copy, and third-party cloud tools routinely trigger LinkedIn's aggressive bot-detection algorithms, resulting in restricted accounts or shadow-bans.",
+      solution:
+        "Architected a resilient distributed scraper using headless browsers with stealth plugins, randomized humanized mouse kinematics, and rotating residential proxies. Built an integrated LLM pipeline that analyzes a lead's recent posts to generate 100% unique hyper-personalized connection icebreakers, syncing verified data straight into HubSpot CRM.",
+      result:
+        "Eliminated manual prospecting overhead, extracting 12,000+ enriched decision-makers monthly with zero account bans and a 42% connection acceptance rate.",
+      stack: JSON.stringify([
+        "Python",
+        "Playwright / Puppeteer",
+        "OpenAI API (GPT-4o)",
+        "Redis Task Queue",
+        "PostgreSQL",
+        "Webhooks (CRM Sync)",
+        "Docker",
+      ]),
+      highlights: JSON.stringify([
+        "Stealth Anti-Detection Engine with randomized human kinematics",
+        "Dynamic Post & Profile AI Analysis for custom icebreakers",
+        "Multi-Step Follow-Up Sequence Engine with rate pacing",
+        "Instant Telegram & CRM Webhook Alerts on lead replies",
+      ]),
+      role: "Lead Architect",
+      status: "Production",
+      metrics: "Zero-Ban Architecture · 12K+ Leads/Mo · 42% Acceptance",
+      coverImage: "/images/projects/linkedin-automation.jpg",
+      mockupType: "browser",
+      demoUrl: "https://github.com/naimsmahmud50-dotcom/Autonomous-LinkedIn-Lead-Engine",
+      githubUrl: "https://github.com/naimsmahmud50-dotcom/Autonomous-LinkedIn-Lead-Engine",
+      featured: true,
+      order: 8,
+    },
   ];
 
   for (const proj of projectsData) {
