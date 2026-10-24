@@ -12,7 +12,7 @@
 
 **A high-craft editorial portfolio and autonomous content management system architected for Mahmud Hasan (AI Automation Architect & Full-Stack Developer, Dhaka, Bangladesh).**
 
-[Live Showcase](https://mahmudhasan.dev) • [Admin Panel](https://mahmudhasan.dev/admin) • [Contact Mahmud](https://mahmudhasan.dev/contact)
+[Live Showcase](https://mahmudhasan.dev) • [Case Studies](https://mahmudhasan.dev/work) • [Contact Mahmud](https://mahmudhasan.dev/contact)
 
 </div>
 
@@ -126,13 +126,13 @@ Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
-## 🔐 Admin Panel Access
+## 🎛️ Content Management Capabilities
 
-The portfolio includes a fully functional standalone management dashboard:
-
-1. Navigate to: `http://localhost:3000/admin`
-2. Login with the `ADMIN_PASSWORD` configured in your private `.env` file.
-3. Manage projects, upload case study assets, edit site copy in English & Bengali, and read inbound inquiries in real time.
+The portfolio includes an integrated private dashboard for authenticated site administration:
+* **Dynamic Case Study Curation**: Create, edit, and reorder case study blueprints and media assets.
+* **Bilingual Copy Engine**: Live synchronization for English and Bengali content across all sections.
+* **Inbound Lead Inbox**: Real-time reader for contact form inquiries with status tracking.
+* **Protected Operations**: Secured via server-side Web Crypto HMAC token verification.
 
 ---
 
