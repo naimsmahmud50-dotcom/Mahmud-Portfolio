@@ -18,20 +18,25 @@ export default function FloatingMenu({
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > scrollThreshold);
+    const handleScrollOrResize = () => {
+      const isMobile = window.innerWidth < 768;
+      setIsScrolled(isMobile || window.scrollY > scrollThreshold);
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    handleScrollOrResize();
+    window.addEventListener("scroll", handleScrollOrResize, { passive: true });
+    window.addEventListener("resize", handleScrollOrResize, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScrollOrResize);
+      window.removeEventListener("resize", handleScrollOrResize);
+    };
   }, [scrollThreshold]);
 
-  // Button is visible if user has scrolled past hero OR if menu is currently open
+  // Button is visible if user has scrolled past hero OR on mobile OR if menu is currently open
   const isVisible = isScrolled || isOpen;
 
   return (
-    <div className="fixed top-6 right-6 sm:top-8 sm:right-8 z-50 pointer-events-none">
+    <div className="fixed top-6 right-6 sm:top-8 sm:right-8 z-[60] pointer-events-none">
       <motion.div
         initial={false}
         animate={{
@@ -49,7 +54,7 @@ export default function FloatingMenu({
             onClick={onToggle}
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isOpen}
-            className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent text-accent-ink shadow-2xl flex flex-col items-center justify-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent select-none group cursor-pointer transition-transform duration-300 active:scale-95"
+            className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent text-accent-ink shadow-[0_10px_35px_rgba(0,0,0,0.35)] flex flex-col items-center justify-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent select-none group cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95"
           >
             {/* Morphing 2-Line Hamburger to X */}
             <div className="relative w-6 sm:w-7 h-4 flex flex-col justify-center items-center pointer-events-none">

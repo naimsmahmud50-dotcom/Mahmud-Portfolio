@@ -113,9 +113,13 @@ export default function NavPanel({ isOpen, onClose, settings }: NavPanelProps) {
   }, [isOpen, handleKeyDown]);
 
   // Close on route change
+  const prevPathname = useRef(pathname);
   useEffect(() => {
-    if (isOpen) {
-      onClose();
+    if (prevPathname.current !== pathname) {
+      prevPathname.current = pathname;
+      if (isOpen) {
+        onClose();
+      }
     }
   }, [pathname, isOpen, onClose]);
 
@@ -171,7 +175,7 @@ export default function NavPanel({ isOpen, onClose, settings }: NavPanelProps) {
             </svg>
 
             {/* Top Navigation Index Label */}
-            <div className="pt-2">
+            <div className="pt-2 pr-20 sm:pr-24">
               <div className="text-[11px] font-mono tracking-widest text-muted uppercase pb-4 border-b border-line flex items-center justify-between">
                 <span>Navigation</span>
                 <span className="text-[10px] text-muted">Dhaka, BD (UTC+6)</span>
