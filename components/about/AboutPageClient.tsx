@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import {
@@ -133,8 +133,6 @@ export default function AboutPageClient({
 }: AboutPageClientProps) {
   const { isPreloaderDone } = usePreloader();
   const portraitRef = useRef<HTMLDivElement>(null);
-  const dragContainerRef = useRef<HTMLDivElement>(null);
-  const [dragWidth, setDragWidth] = useState(0);
 
   // Parallax on Portrait Photo
   const { scrollYProgress: portraitScroll } = useScroll({
@@ -142,15 +140,6 @@ export default function AboutPageClient({
     offset: ["start end", "end start"],
   });
   const portraitParallaxY = useTransform(portraitScroll, [0, 1], [-40, 40]);
-
-  // Compute drag bounds dynamically
-  useEffect(() => {
-    if (dragContainerRef.current) {
-      const scrollW = dragContainerRef.current.scrollWidth;
-      const clientW = dragContainerRef.current.offsetWidth;
-      setDragWidth(Math.max(0, scrollW - clientW + 60));
-    }
-  }, []);
 
   const headlineText =
     about.heroHeadlineEn ||
@@ -429,7 +418,7 @@ export default function AboutPageClient({
         </div>
       </div>
 
-      {/* 6. PHOTO STRIP WITH HORIZONTAL DRAG (Cursor shows "Drag") */}
+      {/* 6. PHOTO STRIP WITH AUTO CONTINUOUS MARQUEE LOOP */}
       <div className="mb-28 sm:mb-36">
         <div className="flex items-center justify-between mb-8 pb-4 border-b border-line">
           <div>
@@ -440,28 +429,27 @@ export default function AboutPageClient({
               Atmosphere &amp; System Artefacts
             </h2>
           </div>
-          <span className="hidden sm:inline-block text-xs font-mono text-muted">
-            ← Drag to explore →
+          <span className="hidden sm:inline-flex items-center gap-2 text-xs font-mono text-muted">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span>Auto Stream · Hover to pause</span>
           </span>
         </div>
 
-        {/* Draggable Carousel Track */}
+        {/* Continuous Infinite Marquee Track */}
         <div
-          ref={dragContainerRef}
-          data-cursor="drag"
-          data-cursor-text="DRAG"
-          className="overflow-hidden cursor-grab active:cursor-grabbing py-4 -mx-6 sm:-mx-10 md:-mx-14 px-6 sm:px-10 md:px-14"
+          data-cursor="view"
+          className="relative overflow-hidden py-4 -mx-6 sm:-mx-10 md:-mx-14 px-6 sm:px-10 md:px-14 group/track select-none"
         >
-          <motion.div
-            drag="x"
-            dragConstraints={{ left: -dragWidth, right: 0 }}
-            dragElastic={0.08}
-            className="flex gap-6 sm:gap-8 w-max select-none"
-          >
-            {photoStripItems.map((item) => (
+          {/* Edge Vignette Fades for Seamless Infinite Blend */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-bg via-bg/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-bg via-bg/80 to-transparent z-10 pointer-events-none" />
+
+          {/* Marquee Flex Ribbon */}
+          <div className="flex gap-6 sm:gap-8 w-max animate-marquee motion-reduce:animate-none group-hover/track:[animation-play-state:paused] will-change-transform py-2">
+            {[...photoStripItems, ...photoStripItems].map((item, idx) => (
               <div
-                key={item.id}
-                className="relative w-[280px] sm:w-[360px] md:w-[420px] rounded-3xl overflow-hidden bg-surface border border-line shadow-xl shrink-0 group pointer-events-none"
+                key={`${item.id}-${idx}`}
+                className="relative w-[280px] sm:w-[360px] md:w-[420px] rounded-3xl overflow-hidden bg-surface border border-line hover:border-accent/50 shadow-xl shrink-0 group/card transition-all duration-500 hover:scale-[1.02] cursor-pointer"
               >
                 <div className={`relative w-full ${item.aspect} bg-surface-raised overflow-hidden`}>
                   <Image
@@ -469,13 +457,13 @@ export default function AboutPageClient({
                     alt={item.title}
                     fill
                     sizes="(max-width: 768px) 280px, 420px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+                    className="object-cover group-hover/card:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-transparent to-transparent pointer-events-none" />
                 </div>
 
                 <div className="p-6">
-                  <h4 className="font-display text-lg sm:text-xl font-medium text-text">
+                  <h4 className="font-display text-lg sm:text-xl font-medium text-text group-hover/card:text-accent transition-colors">
                     {item.title}
                   </h4>
                   <p className="text-xs sm:text-sm font-mono text-muted mt-1">
@@ -484,7 +472,7 @@ export default function AboutPageClient({
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
