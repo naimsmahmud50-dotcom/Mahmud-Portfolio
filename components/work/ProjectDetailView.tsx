@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowLeft, ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ExternalLink, Lock } from "lucide-react";
 import type { ProjectData } from "@/lib/data";
 import MagneticWrapper from "@/components/MagneticWrapper";
 import { usePageTransition } from "@/context/TransitionContext";
@@ -76,6 +76,44 @@ export default function ProjectDetailView({
             {project.summary}
           </p>
 
+          {/* Action CTAs: Visit Live Platform, Source Code, or Private Badge */}
+          <div className="flex flex-wrap items-center gap-4 mt-8">
+            {project.demoUrl && (
+              <MagneticWrapper strength={0.25}>
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-accent text-accent-ink font-mono text-xs uppercase tracking-wider font-semibold shadow-xl hover:scale-105 active:scale-95 transition-all duration-300"
+                >
+                  <span>Visit Live Platform</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </MagneticWrapper>
+            )}
+
+            {project.githubUrl && (
+              <MagneticWrapper strength={0.2}>
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full bg-surface border border-line text-text hover:text-accent hover:border-accent font-mono text-xs uppercase tracking-wider transition-all duration-300"
+                >
+                  <span>Source Code</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </MagneticWrapper>
+            )}
+
+            {!project.demoUrl && !project.githubUrl && (
+              <div className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-surface border border-line text-muted font-mono text-xs uppercase tracking-wider select-none">
+                <Lock className="w-3.5 h-3.5 text-accent" />
+                <span>Private Enterprise Project</span>
+              </div>
+            )}
+          </div>
+
           {/* Meta Grid Row: Role, Year, Stack, Status, Link */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 mt-12 pt-8 border-t border-line text-xs font-mono">
             <div>
@@ -107,17 +145,34 @@ export default function ProjectDetailView({
             </div>
             <div className="col-span-2 md:col-span-1">
               <p className="text-muted uppercase text-[10px] tracking-widest mb-1.5">
-                Repository
+                {project.demoUrl ? "Platform" : project.githubUrl ? "Repository" : "Access"}
               </p>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-accent hover:underline font-bold"
-              >
-                <span>Inspect Source</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
+              {project.demoUrl ? (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-accent hover:underline font-bold"
+                >
+                  <span>Visit Site</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              ) : project.githubUrl ? (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-accent hover:underline font-bold"
+                >
+                  <span>Inspect Source</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              ) : (
+                <span className="inline-flex items-center gap-1.5 text-muted font-bold">
+                  <Lock className="w-3 h-3 text-accent" />
+                  <span>Private Project</span>
+                </span>
+              )}
             </div>
           </div>
         </div>

@@ -238,7 +238,7 @@ export default function WorkPageClient({ initialProjects }: WorkPageClientProps)
                   </div>
 
                   {/* Right: Category + Year & Mobile Indicator */}
-                  <div className="flex items-center gap-6 text-xs sm:text-sm font-mono text-muted uppercase tracking-wider">
+                  <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-mono text-muted uppercase tracking-wider">
                     <span className="hidden sm:inline-block">
                       {proj.category === "ai"
                         ? "AI Automation"
@@ -248,6 +248,23 @@ export default function WorkPageClient({ initialProjects }: WorkPageClientProps)
                     </span>
                     <span>·</span>
                     <span>{proj.year}</span>
+                    {proj.demoUrl && (
+                      <>
+                        <span className="hidden md:inline-block text-line-strong">·</span>
+                        <span className="hidden md:inline-flex items-center gap-1.5 text-accent font-medium">
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                          Live
+                        </span>
+                      </>
+                    )}
+                    {!proj.demoUrl && !proj.githubUrl && (
+                      <>
+                        <span className="hidden md:inline-block text-line-strong">·</span>
+                        <span className="hidden md:inline-flex items-center gap-1 text-muted/70">
+                          Private
+                        </span>
+                      </>
+                    )}
                     <div className="w-8 h-8 rounded-full border border-line flex items-center justify-center group-hover:border-accent group-hover:bg-accent group-hover:text-accent-ink transition-colors sm:hidden">
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </div>
