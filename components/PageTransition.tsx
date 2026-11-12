@@ -40,15 +40,15 @@ export default function PageTransition() {
           animate={{ y: "0%" }}
           exit={{ y: "-100%" }}
           transition={{
-            duration: 0.55,
+            duration: 0.38,
             ease: [0.76, 0, 0.24, 1],
           }}
-          className="fixed inset-0 z-[9990] flex items-center justify-center bg-surface text-text select-none pointer-events-auto"
+          className="fixed inset-0 z-[9990] flex items-center justify-center bg-bg text-text select-none pointer-events-auto"
         >
           {/* Top Curved Edge SVG (Active on Entry) */}
           {w > 0 && (
             <svg
-              className="absolute -top-[299px] left-0 w-full h-[300px] pointer-events-none fill-surface"
+              className="absolute -top-[299px] left-0 w-full h-[300px] pointer-events-none fill-bg"
               viewBox={`0 0 ${w} 300`}
               preserveAspectRatio="none"
               aria-hidden="true"
@@ -56,17 +56,17 @@ export default function PageTransition() {
               <motion.path
                 initial={{ d: topCurveInitial }}
                 animate={{ d: topCurveFlat }}
-                transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
+                transition={{ duration: 0.38, ease: [0.76, 0, 0.24, 1] }}
               />
             </svg>
           )}
 
           {/* Centered Route Destination Label with Accent Dot */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85, y: 20 }}
+            initial={{ opacity: 0, scale: 0.85, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.85, y: -20 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
+            exit={{ opacity: 0, scale: 0.85, y: -15 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             className="flex items-center gap-3 sm:gap-4 text-3xl sm:text-5xl md:text-6xl font-display font-medium tracking-tight text-text"
           >
             <span className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-full bg-accent animate-pulse" />
@@ -76,7 +76,7 @@ export default function PageTransition() {
           {/* Bottom Curved Edge SVG (Active on Exit) */}
           {w > 0 && (
             <svg
-              className="absolute -bottom-[299px] left-0 w-full h-[300px] pointer-events-none fill-surface"
+              className="absolute -bottom-[299px] left-0 w-full h-[300px] pointer-events-none fill-bg"
               viewBox={`0 0 ${w} 300`}
               preserveAspectRatio="none"
               aria-hidden="true"
@@ -84,7 +84,7 @@ export default function PageTransition() {
               <motion.path
                 initial={{ d: bottomCurveHanging }}
                 animate={{ d: bottomCurveFlat }}
-                transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+                transition={{ duration: 0.38, ease: [0.76, 0, 0.24, 1] }}
               />
             </svg>
           )}

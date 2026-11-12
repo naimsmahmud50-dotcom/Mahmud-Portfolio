@@ -140,7 +140,7 @@ export function TransitionProvider({
         window.dispatchEvent(new CustomEvent("closeNavPanel"));
       }
 
-      // Midpoint: Swap route when curtain is at 100% full screen (~550ms)
+      // Midpoint: Swap route when curtain covers viewport (~380ms)
       transitionTimerRef.current = setTimeout(() => {
         router.push(href);
         window.scrollTo(0, 0);
@@ -150,7 +150,7 @@ export function TransitionProvider({
           // Fallback if ScrollTrigger not active
         }
 
-        // Completion: Exit curtain out the top (~1200ms total)
+        // Completion: Exit curtain smoothly (~620ms total)
         setTimeout(() => {
           setIsTransitioning(false);
           setTargetRouteName("");
@@ -159,8 +159,8 @@ export function TransitionProvider({
           } catch {
             // Refresh
           }
-        }, 650);
-      }, 550);
+        }, 240);
+      }, 380);
     },
     [pathname, isTransitioning, router]
   );

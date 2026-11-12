@@ -21,18 +21,20 @@ export default function Preloader() {
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    // 1. Check if already preloaded in this session
+    // 1. Check if already preloaded in this session or prefers reduced motion
     const hasPreloaded = sessionStorage.getItem("portfolio_preloaded");
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+    const isHomePage = window.location.pathname === "/";
 
-    if (hasPreloaded === "true" || prefersReducedMotion) {
+    // Only run the introductory preloader on the homepage for first-time session
+    if (hasPreloaded === "true" || prefersReducedMotion || !isHomePage) {
       setPreloaderDone(true);
       return;
     }
 
-    // First load in session: show preloader
+    // First load on homepage in session: show preloader
     setIsLoading(true);
     document.body.style.overflow = "hidden";
 
@@ -51,12 +53,12 @@ export default function Preloader() {
     };
   }, [setPreloaderDone]);
 
-  // Word cycling: ~150ms per word
+  // Word cycling: ~90ms per word
   useEffect(() => {
     if (!isLoading) return;
 
     if (index === words.length - 1) {
-      // Landed on the last greeting (こんにちは): hold for 320ms, then slide up to reveal
+      // Landed on the last greeting (こんにちは): hold for 200ms, then slide up to reveal
       const exitTimer = setTimeout(() => {
         setIsLoading(false);
         sessionStorage.setItem("portfolio_preloaded", "true");
@@ -64,15 +66,15 @@ export default function Preloader() {
         // Signal hero and other components that preloader has completed
         setTimeout(() => {
           setPreloaderDone(true);
-        }, 800);
-      }, 320);
+        }, 600);
+      }, 200);
 
       return () => clearTimeout(exitTimer);
     }
 
     const timer = setTimeout(() => {
       setIndex((prev) => prev + 1);
-    }, 150);
+    }, 90);
 
     return () => clearTimeout(timer);
   }, [index, isLoading, setPreloaderDone]);
