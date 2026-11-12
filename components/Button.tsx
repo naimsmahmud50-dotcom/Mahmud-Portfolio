@@ -42,17 +42,17 @@ export default function Button({
 
   const sizeClasses = {
     sm: "px-5 py-2.5 text-xs",
-    md: "px-7 py-4 text-sm",
-    lg: "px-9 py-5 text-base",
+    md: "px-7 py-3.5 text-sm",
+    lg: "px-9 py-4.5 text-base",
   }[size];
 
   const content = (
     <div
-      className={`group relative overflow-hidden rounded-full font-mono uppercase tracking-wider font-semibold transition-colors duration-300 flex items-center justify-center gap-3 select-none ${sizeClasses} ${
+      className={`group relative overflow-hidden rounded-full font-mono uppercase tracking-wider font-semibold transition-all duration-300 flex items-center justify-center gap-3 select-none ${sizeClasses} ${
         variant === "outline"
-          ? "border border-line text-text hover:text-accent-ink"
+          ? "border border-line-strong bg-surface hover:border-accent text-text hover:text-accent-ink shadow-sm hover:shadow-lg hover:shadow-accent/20"
           : variant === "filled"
-          ? "bg-accent text-accent-ink shadow-lg shadow-accent/20"
+          ? "bg-accent text-accent-ink shadow-lg shadow-accent/20 hover:bg-accent-hover"
           : "text-text hover:text-accent"
       } ${className}`}
     >
@@ -60,7 +60,7 @@ export default function Button({
       {variant === "outline" && (
         <span
           ref={fillRef}
-          className="absolute inset-0 w-full h-[120%] -bottom-[120%] rounded-full bg-accent transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-[100%] pointer-events-none -z-0"
+          className="absolute inset-0 w-full h-full rounded-full bg-accent translate-y-full transition-transform duration-400 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0 pointer-events-none -z-0"
         />
       )}
 

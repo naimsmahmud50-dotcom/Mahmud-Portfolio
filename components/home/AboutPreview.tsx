@@ -3,7 +3,9 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Button from "@/components/Button";
+import { useI18n } from "@/lib/i18n";
 import type { AboutData } from "@/lib/data";
 
 interface WordProps {
@@ -30,6 +32,7 @@ interface AboutPreviewProps {
 
 export default function AboutPreview({ about }: AboutPreviewProps = {}) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const { lang } = useI18n();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -39,8 +42,11 @@ export default function AboutPreview({ about }: AboutPreviewProps = {}) {
   const photoParallaxY = useTransform(scrollYProgress, [0, 1], [-40, 40]);
 
   const paragraphText =
-    about?.storyP1En ||
-    "Helping visionary founders, modern brands, and ambitious engineering teams succeed in the digital era by architecting intelligent AI automation, high-performance web applications, and mission-critical Android solutions that operate flawlessly and scale without limits.";
+    lang === "bn"
+      ? about?.storyP1Bn ||
+        "আমি মাহমুদ হাসান, ঢাকা, বাংলাদেশভিত্তিক একজন এআই অটোমেশন আর্কিটেক্ট ও ফুল-স্ট্যাক সফটওয়্যার ইঞ্জিনিয়ার। অত্যাধুনিক কৃত্রিম বুদ্ধিমত্তা ও নিখুঁত ওয়েব পারফরম্যান্সের মেলবন্ধন তৈরি করাই আমার মূল লক্ষ্য।"
+      : about?.storyP1En ||
+        "I am an AI Automation Architect and Full-Stack Software Engineer based in Dhaka, Bangladesh. I bridge the divide between bleeding-edge machine intelligence and surgical web performance.";
 
   const words = paragraphText.split(" ");
   const avatar = about?.avatarUrl || "/images/mahmud.jpg";
@@ -107,7 +113,7 @@ export default function AboutPreview({ about }: AboutPreviewProps = {}) {
           <div className="flex items-center gap-3 mb-6 sm:mb-8">
             <span className="w-2 h-2 rounded-full bg-accent" />
             <span className="text-xs sm:text-sm font-mono tracking-widest text-muted uppercase">
-              About Mahmud
+              {lang === "bn" ? "মাহমুদ হাসান সম্পর্কে" : "About Mahmud"}
             </span>
           </div>
 
@@ -127,7 +133,10 @@ export default function AboutPreview({ about }: AboutPreviewProps = {}) {
           {/* About Me Action */}
           <div className="mt-10 sm:mt-14">
             <Button href="/about" variant="outline" size="md">
-              <span>More about me</span>
+              <span className="flex items-center gap-2">
+                <span>{lang === "bn" ? "আমার সম্পর্কে বিস্তারিত" : "More about me"}</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-accent group-hover:text-accent-ink" />
+              </span>
             </Button>
           </div>
         </div>
