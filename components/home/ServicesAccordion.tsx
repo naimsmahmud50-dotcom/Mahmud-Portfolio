@@ -56,6 +56,20 @@ const fallbackServiceItems: ServiceItem[] = [
       "Deploying intelligent multi-agent swarms with LangChain, Claude & OpenAI APIs, tool calling, recursive problem solving, stateful memory graphs, and automated headless browser executors.",
     deliverables: ["LangChain Multi-Agent Swarms", "Browser-Automated Workers", "Context-Aware Research Agents", "RAG & Knowledge Retrieval"],
   },
+  {
+    num: "07",
+    title: "Full Stack Development",
+    description:
+      "Architecting end-to-end full-stack web platforms with Next.js App Router, TypeScript, NestJS microservices, event-driven architectures, and high-concurrency databases.",
+    deliverables: ["Next.js & React Frontends", "Node.js & NestJS Microservices", "PostgreSQL & Prisma Databases", "Secure REST & GraphQL APIs"],
+  },
+  {
+    num: "08",
+    title: "Business Automation",
+    description:
+      "Transforming business operations with self-healing workflow automations, CRM synchronization, lead routing pipelines, and webhook integrations that eliminate operational overhead.",
+    deliverables: ["Custom Workflow Automation", "n8n & Zapier Pipelines", "CRM & ERP Integrations", "Automated Business Reporting"],
+  },
 ];
 
 interface ServicesAccordionProps {

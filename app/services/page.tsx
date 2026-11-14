@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, Cpu, Layout, Smartphone, Globe, Share2, Monitor, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Cpu, Layout, Smartphone, Globe, Share2, Monitor, CheckCircle2, Layers, Workflow, Bot, Code } from "lucide-react";
 import { getServices } from "@/lib/data";
 import MagneticWrapper from "@/components/MagneticWrapper";
 
@@ -13,6 +13,10 @@ const iconMap = {
   Globe,
   Share2,
   Monitor,
+  Layers,
+  Workflow,
+  Bot,
+  Code,
 };
 
 const engagementModels = [

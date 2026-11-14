@@ -634,6 +634,38 @@ async function main() {
       icon: "Bot",
       order: 6,
     },
+    {
+      titleEn: "Full Stack Development",
+      titleBn: "ফুল স্ট্যাক ডেভেলপমেন্ট",
+      descriptionEn:
+        "Architecting end-to-end full-stack web platforms with Next.js App Router, TypeScript, NestJS microservices, event-driven architectures, and high-concurrency databases.",
+      descriptionBn:
+        "নেক্সট.জেএস অ্যাপ রাউটার, টাইপস্ক্রিপ্ট, নেস্ট.জেএস মাইক্রোসার্ভিস, ইভেন্ট-ড্রিভেন আর্কিটেকচার এবং হাই-কনকারেন্সি ডাটাবেস সমন্বয়ে সম্পূর্ণ ফুল-স্ট্যাক ওয়েব প্ল্যাটফর্ম তৈরি।",
+      deliverables: JSON.stringify([
+        "Next.js & React Frontends",
+        "Node.js & NestJS Microservices",
+        "PostgreSQL & Prisma Databases",
+        "Secure REST & GraphQL APIs",
+      ]),
+      icon: "Layers",
+      order: 7,
+    },
+    {
+      titleEn: "Business Automation",
+      titleBn: "বিজনেস অটোমেশন",
+      descriptionEn:
+        "Transforming business operations with self-healing workflow automations, CRM synchronization, lead routing pipelines, and webhook integrations that eliminate operational overhead.",
+      descriptionBn:
+        "ব্যবসার দৈনন্দিন কাজ স্বয়ংক্রিয় করতে কাস্টম ওয়ার্কফ্লো অটোমেশন, সিআরএম ডাটা সিঙ্ক, লিড রাউটিং পাইপলাইন এবং সফটওয়্যার ইন্টিগ্রেশন যা কাজের জটিলতা কমায়।",
+      deliverables: JSON.stringify([
+        "Custom Workflow Automation",
+        "n8n & Zapier Pipelines",
+        "CRM & ERP Integrations",
+        "Automated Business Reporting",
+      ]),
+      icon: "Workflow",
+      order: 8,
+    },
   ];
 
   for (const s of servicesData) {
