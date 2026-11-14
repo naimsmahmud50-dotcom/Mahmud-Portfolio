@@ -9,5 +9,5 @@
 - [x] T005: Update `iconMap` in `app/services/page.tsx` with `Layers`, `Workflow`, `Bot`, `Code`
 - [x] T006: Verify `getServices()` and database records return 8 services
 - [x] T007: Run `npm run lint` and `npm run build` (Passed with 0 errors, 28/28 pages built)
-- [ ] T008: Commit changes and push to GitHub `main` for Vercel deployment
-- [ ] T009: Verify live deployment on Vercel
+- [x] T008: Commit changes and push to GitHub `main` for Vercel deployment (Commit: 9ab4bdb)
+- [x] T009: Verify live deployment on Vercel
