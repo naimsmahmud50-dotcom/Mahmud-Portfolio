@@ -177,7 +177,7 @@ async function main() {
       slug: "madrasah-ecosystem",
       title: "Madrasah Ecosystem Software",
       subtitle: "Enterprise Islamic Institution & Hifz Tracking Platform",
-      year: "2024",
+      year: "2026",
       category: "Web & Mobile App",
       filterCategory: "android",
       summary:
@@ -216,7 +216,7 @@ async function main() {
       slug: "secure-my-pc",
       title: "Secure My PC",
       subtitle: "Endpoint Security & Threat Interception Daemon",
-      year: "2024",
+      year: "2026",
       category: "Desktop & Security Software",
       filterCategory: "automation",
       summary:
@@ -255,7 +255,7 @@ async function main() {
       slug: "autonomous-ai-agent",
       title: "Autonomous AI Agent",
       subtitle: "Enterprise Client Acquisition & Data Enrichment Swarm",
-      year: "2024",
+      year: "2026",
       category: "AI & Autonomous Systems",
       filterCategory: "automation",
       summary:
@@ -294,7 +294,7 @@ async function main() {
       slug: "travel-with-maijrun",
       title: "Travel with Maijrun",
       subtitle: "Luxury Concierge & Multi-Currency Travel Booking Portal",
-      year: "2024",
+      year: "2026",
       category: "Fullstack Web Platform",
       filterCategory: "web",
       summary:
@@ -333,7 +333,7 @@ async function main() {
       slug: "arabic-language-club",
       title: "Arabic Language & Culture Club",
       subtitle: "Interactive Linguistic Academy & Student Community",
-      year: "2023",
+      year: "2026",
       category: "Fullstack Web Platform",
       filterCategory: "web",
       summary:
@@ -372,7 +372,7 @@ async function main() {
       slug: "student-life-circle",
       title: "Student Life Circle",
       subtitle: "Academic Collaboration & Skill Development Network",
-      year: "2023",
+      year: "2026",
       category: "Web & Community Platform",
       filterCategory: "web",
       summary:
@@ -411,7 +411,7 @@ async function main() {
       slug: "facebook-automation",
       title: "Facebook Automation",
       subtitle: "Autonomous Feed Scheduling, Real-time Comment Moderation & Instant DM Outreach",
-      year: "2024",
+      year: "2026",
       category: "Social API & Automation",
       filterCategory: "automation",
       summary:
@@ -491,7 +491,7 @@ async function main() {
       slug: "maijrun-tech-store",
       title: "Maijrun Tech Store",
       subtitle: "Headless E-Commerce Platform & Custom PC Builder",
-      year: "2024",
+      year: "2026",
       category: "Fullstack E-Commerce",
       filterCategory: "web",
       summary:

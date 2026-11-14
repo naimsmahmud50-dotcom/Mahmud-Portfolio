@@ -217,7 +217,7 @@ export const defaultProjects: ProjectData[] = [
     slug: "madrasah-ecosystem",
     title: "Madrasah Ecosystem Software",
     subtitle: "Enterprise Islamic Institution & Hifz Tracking Platform",
-    year: "2024",
+    year: "2026",
     category: "android",
     filterCategory: "android",
     summary:
@@ -252,7 +252,7 @@ export const defaultProjects: ProjectData[] = [
     slug: "secure-my-pc",
     title: "Secure My PC",
     subtitle: "Endpoint Security & Threat Interception Daemon",
-    year: "2024",
+    year: "2026",
     category: "ai",
     filterCategory: "automation",
     summary:
@@ -287,7 +287,7 @@ export const defaultProjects: ProjectData[] = [
     slug: "autonomous-ai-agent",
     title: "Autonomous AI Agent",
     subtitle: "Enterprise Client Acquisition & Data Enrichment Swarm",
-    year: "2024",
+    year: "2026",
     category: "ai",
     filterCategory: "automation",
     summary:
@@ -322,7 +322,7 @@ export const defaultProjects: ProjectData[] = [
     slug: "travel-with-maijrun",
     title: "Travel with Maijrun",
     subtitle: "Luxury Concierge & Multi-Currency Travel Booking Portal",
-    year: "2024",
+    year: "2026",
     category: "web",
     filterCategory: "web",
     summary:
@@ -357,7 +357,7 @@ export const defaultProjects: ProjectData[] = [
     slug: "arabic-language-club",
     title: "Arabic Language & Culture Club",
     subtitle: "Interactive Linguistic Academy & Student Community",
-    year: "2023",
+    year: "2026",
     category: "web",
     filterCategory: "web",
     summary:
@@ -392,7 +392,7 @@ export const defaultProjects: ProjectData[] = [
     slug: "student-life-circle",
     title: "Student Life Circle",
     subtitle: "Academic Collaboration & Skill Development Network",
-    year: "2023",
+    year: "2026",
     category: "web",
     filterCategory: "web",
     summary:
@@ -427,7 +427,7 @@ export const defaultProjects: ProjectData[] = [
     slug: "facebook-automation",
     title: "Facebook Automation",
     subtitle: "Autonomous Feed Scheduling, Real-time Comment Moderation & Instant DM Outreach",
-    year: "2024",
+    year: "2026",
     category: "ai",
     filterCategory: "automation",
     summary:
@@ -505,7 +505,7 @@ export const defaultProjects: ProjectData[] = [
     slug: "maijrun-tech-store",
     title: "Maijrun Tech Store",
     subtitle: "Headless E-Commerce Platform & Custom PC Builder",
-    year: "2024",
+    year: "2026",
     category: "web",
     filterCategory: "web",
     summary:
