@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ArrowDownRight } from "lucide-react";
 import MagneticWrapper from "@/components/MagneticWrapper";
@@ -52,7 +51,6 @@ export default function Hero({ hero, settings }: HeroProps = {}) {
   const line1X = useTransform(scrollYProgress, [0, 1], ["0vw", "-4vw"]);
   const line2X = useTransform(scrollYProgress, [0, 1], ["0vw", "4vw"]);
   const nameParallaxY = useTransform(scrollYProgress, [0, 1], [0, 70]);
-  const photoParallaxY = useTransform(scrollYProgress, [0, 1], [0, 45]);
 
   // Dynamic Name & Letters for 2-Line Stagger Reveal
   const fullName = hero?.name || "Mahmud Hasan";
@@ -84,7 +82,7 @@ export default function Hero({ hero, settings }: HeroProps = {}) {
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[750px] h-[350px] sm:h-[450px] bg-gradient-to-tr from-accent/[0.07] via-surface/40 to-transparent rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse duration-[8000ms]" />
 
       {/* Top Small Line inside Overflow Mask */}
-      <div className="overflow-hidden flex items-center justify-between">
+      <div className="overflow-hidden">
         <motion.p
           initial={reducedMotion ? { opacity: 0 } : { y: "110%", opacity: 0 }}
           animate={
@@ -102,36 +100,17 @@ export default function Hero({ hero, settings }: HeroProps = {}) {
           <span className="w-2 h-2 rounded-full bg-accent" />
           <span>{badgeText}</span>
         </motion.p>
-
-        {/* Mobile-Only Subtle Avatar */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isPreloaderDone ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="lg:hidden flex items-center gap-2 pl-3"
-        >
-          <div className="relative w-8 h-8 rounded-full border border-accent/40 bg-surface-2 overflow-hidden shadow-sm">
-            <Image
-              src="/images/mahmud-hero.webp"
-              alt="Mahmud Hasan"
-              fill
-              sizes="32px"
-              className="object-cover object-top filter contrast-[1.04]"
-            />
-          </div>
-        </motion.div>
       </div>
 
       {/* Huge Editorial Name with Deliberate 2-Line Stagger Reveal & Scroll Parallax */}
       <motion.div
         style={reducedMotion ? undefined : { y: nameParallaxY }}
-        className="my-auto py-6 sm:py-10 w-full relative"
+        className="my-auto py-6 sm:py-10 w-full overflow-hidden"
       >
-        <div className="relative">
-          <h1
-            className="hero-name font-display font-medium text-text tracking-tighter flex flex-col w-full max-w-full overflow-wrap-normal break-keep"
-            aria-label={lang === "bn" ? "মাহমুদ হাসান—" : "Mahmud Hasan—"}
-          >
+        <h1
+          className="hero-name font-display font-medium text-text tracking-tighter flex flex-col w-full max-w-full overflow-wrap-normal break-keep"
+          aria-label={lang === "bn" ? "মাহমুদ হাসান—" : "Mahmud Hasan—"}
+        >
           {lang === "bn" ? (
             /* ==========================================================
                BANGLA MODE: Animate by full word to protect complex conjuncts
@@ -333,52 +312,6 @@ export default function Hero({ hero, settings }: HeroProps = {}) {
             </>
           )}
         </h1>
-
-          {/* Desktop Right Hero Portrait Cutout with Ambient Glow & Floating Parallax */}
-          <motion.div
-            style={reducedMotion ? undefined : { y: photoParallaxY }}
-            initial={{ opacity: 0, scale: 0.92, y: 25 }}
-            animate={
-              isPreloaderDone
-                ? { opacity: 1, scale: 1, y: 0 }
-                : { opacity: 0, scale: 0.92, y: 25 }
-            }
-            transition={{
-              duration: 1.0,
-              ease: [0.25, 1, 0.5, 1],
-              delay: reducedMotion ? 0.1 : 0.35,
-            }}
-            className="hidden lg:flex absolute right-0 xl:right-4 2xl:right-8 bottom-0 z-10 flex-col items-center select-none pointer-events-auto group"
-          >
-            {/* Soft Ambient Radial Glow behind Mahmud */}
-            <div
-              className="absolute -inset-4 sm:-inset-8 -z-10 pointer-events-none rounded-full blur-3xl opacity-25 group-hover:opacity-40 transition-opacity duration-700"
-              style={{
-                background:
-                  "radial-gradient(circle, var(--accent) 0%, rgba(56, 189, 248, 0.25) 45%, transparent 70%)",
-              }}
-              aria-hidden="true"
-            />
-
-            {/* Cutout Image */}
-            <div className="relative w-[260px] lg:w-[280px] xl:w-[330px] 2xl:w-[360px] aspect-[753/989] transition-transform duration-500 ease-out group-hover:scale-[1.02]">
-              <Image
-                src="/images/mahmud-hero.webp"
-                alt="Mahmud Hasan — AI Automation & Full-Stack Architect"
-                fill
-                sizes="(max-width: 1280px) 280px, (max-width: 1536px) 330px, 360px"
-                priority
-                className="object-contain object-bottom filter contrast-[1.04] brightness-[1.02]"
-              />
-            </div>
-
-            {/* Status Pill Floating Under Portrait */}
-            <div className="absolute -bottom-2 sm:-bottom-3 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-surface-2/90 border border-line text-[10px] sm:text-[11px] font-mono text-muted backdrop-blur-md shadow-xl transition-transform duration-300 group-hover:-translate-y-0.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span>{lang === "bn" ? "মাহমুদ হাসান" : "Mahmud Hasan"}</span>
-            </div>
-          </motion.div>
-        </div>
 
         {/* Thin 1px Line Divider: draws from left to right (scaleX 0->1, 1s) */}
         <motion.div
