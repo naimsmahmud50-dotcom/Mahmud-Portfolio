@@ -7,4 +7,4 @@
 - [x] T003: Add Maijrun Tech Store to `prisma/seed.ts`
 - [x] T004: Upsert project record into SQLite `prisma/dev.db`
 - [x] T005: Run `npm run build` to verify clean compilation & SSG generation for `/work/maijrun-tech-store`
-- [ ] T006: Commit and push changes to GitHub `main` to trigger Vercel deployment
+- [x] T006: Commit and push changes to GitHub `main` to trigger Vercel deployment
