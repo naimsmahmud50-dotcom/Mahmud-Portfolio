@@ -3,7 +3,7 @@
 import React, { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Lock, ArrowRight, ShieldCheck, AlertCircle, Loader2 } from "lucide-react";
-import Magnetic from "@/components/Magnetic";
+import MagneticWrapper from "@/components/MagneticWrapper";
 
 function LoginForm() {
   const [passcode, setPasscode] = useState("");
@@ -84,7 +84,7 @@ function LoginForm() {
         )}
 
         <div className="pt-2">
-          <Magnetic strength={0.3} className="w-full">
+          <MagneticWrapper strength={0.3} className="w-full">
             <button
               type="submit"
               disabled={loading}
@@ -102,7 +102,7 @@ function LoginForm() {
                 </>
               )}
             </button>
-          </Magnetic>
+          </MagneticWrapper>
         </div>
       </form>
 

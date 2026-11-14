@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, Cpu, Layout, Smartphone, Globe, Share2, Monitor, CheckCircle2 } from "lucide-react";
 import { getServices } from "@/lib/data";
-import Magnetic from "@/components/Magnetic";
+import MagneticWrapper from "@/components/MagneticWrapper";
 
 export const revalidate = 5;
 
@@ -223,7 +223,7 @@ export default async function ServicesPage() {
           </p>
         </div>
 
-        <Magnetic strength={0.4}>
+        <MagneticWrapper strength={0.4}>
           <Link
             href="/contact"
             className="px-8 py-4 rounded-full bg-accent text-accent-ink font-semibold text-sm tracking-wide flex items-center gap-3 shadow-lg hover:shadow-accent/25 transition-all"
@@ -231,7 +231,7 @@ export default async function ServicesPage() {
             <span>Discuss Scope</span>
             <ArrowUpRight className="w-4 h-4" />
           </Link>
-        </Magnetic>
+        </MagneticWrapper>
       </div>
     </div>
   );

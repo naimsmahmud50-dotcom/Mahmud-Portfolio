@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Copy, Check, Sparkles } from "lucide-react";
-import Magnetic from "@/components/Magnetic";
+import MagneticWrapper from "@/components/MagneticWrapper";
 import { useI18n } from "@/lib/i18n";
 
 interface ContactCtaProps {
@@ -41,14 +41,14 @@ export default function ContactCta({ email: emailProp }: ContactCtaProps) {
 
       {/* Large Email Link + Copy Interaction */}
       <div className="flex flex-col sm:flex-row items-center gap-4 mb-10">
-        <Magnetic strength={0.3}>
+        <MagneticWrapper strength={0.3}>
           <a
             href={`mailto:${email}`}
             className="group text-2xl sm:text-4xl md:text-5xl font-display font-bold text-foreground hover:text-accent transition-colors underline decoration-accent/40 underline-offset-8"
           >
             {email}
           </a>
-        </Magnetic>
+        </MagneticWrapper>
 
         <button
           onClick={handleCopy}
@@ -70,7 +70,7 @@ export default function ContactCta({ email: emailProp }: ContactCtaProps) {
       </div>
 
       {/* Start a Conversation Magnetic Button */}
-      <Magnetic strength={0.4}>
+      <MagneticWrapper strength={0.4}>
         <Link
           href="/contact"
           className="group px-8 py-4 rounded-full bg-accent text-accent-ink font-semibold text-sm tracking-wide flex items-center gap-3 shadow-xl hover:shadow-accent/25 hover:scale-105 transition-all duration-300"
@@ -80,7 +80,7 @@ export default function ContactCta({ email: emailProp }: ContactCtaProps) {
             <ArrowUpRight className="w-3.5 h-3.5" />
           </div>
         </Link>
-      </Magnetic>
+      </MagneticWrapper>
     </section>
   );
 }
