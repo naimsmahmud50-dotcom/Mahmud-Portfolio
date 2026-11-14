@@ -8,5 +8,5 @@
 - [x] T004: Update `components/home/Hero.tsx` to include the portrait cutout with ambient glow, Framer Motion reveal, and responsive layout
 - [x] T005: Visually verify with screenshots on desktop (1440x900) and mobile (390x844) viewports
 - [x] T006: Run `npm run lint` and `npm run build` (Passed with 0 errors)
-- [ ] T007: Commit changes and push to GitHub `main` for Vercel deployment
-- [ ] T008: Verify live deployment on Vercel
+- [x] T007: Commit changes and push to GitHub `main` for Vercel deployment (Commit: a903222)
+- [x] T008: Verify live deployment on Vercel
