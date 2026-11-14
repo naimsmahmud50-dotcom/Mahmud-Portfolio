@@ -84,6 +84,85 @@ const pipelineSteps = [
   },
 ];
 
+function SquareVideoCard({
+  item,
+  lang,
+  onSelect,
+}: {
+  item: ExtraSkillVideo;
+  lang: string;
+  onSelect: (item: ExtraSkillVideo) => void;
+}) {
+  return (
+    <div
+      onClick={() => onSelect(item)}
+      className="group/card relative w-[280px] sm:w-[320px] md:w-[360px] aspect-square rounded-3xl bg-surface border border-line/80 hover:border-accent/60 overflow-hidden cursor-pointer flex-shrink-0 transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] select-none"
+    >
+      {/* Background Media with Autoplay on Hover */}
+      <video
+        src={item.videoUrl}
+        poster={item.thumbnail}
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        onMouseEnter={(e) => {
+          const v = e.currentTarget;
+          v.play().catch(() => {});
+        }}
+        onMouseLeave={(e) => {
+          const v = e.currentTarget;
+          v.pause();
+          v.currentTime = 0;
+        }}
+        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
+      />
+
+      {/* Dark Vignette Overlay on Top & Bottom */}
+      <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-black/60 pointer-events-none" />
+
+      {/* Top Floating Badges */}
+      <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none z-10">
+        <span className="px-2.5 py-1 rounded-full bg-bg/85 backdrop-blur-md border border-line text-[10px] font-mono text-accent font-semibold">
+          {lang === "bn" ? item.categoryLabelBn : item.categoryLabel}
+        </span>
+        <span className="px-2.5 py-1 rounded-full bg-bg/85 backdrop-blur-md border border-line text-[10px] font-mono text-text flex items-center gap-1">
+          <Clock className="w-3 h-3 text-muted" />
+          {item.duration}
+        </span>
+      </div>
+
+      {/* Center Floating Play Button */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+        <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-accent/90 text-accent-ink flex items-center justify-center scale-90 opacity-80 group-hover/card:scale-110 group-hover/card:opacity-100 transition-all duration-300 shadow-xl">
+          <Play className="w-5 sm:w-6 h-5 sm:h-6 ml-0.5 fill-accent-ink text-accent-ink" />
+        </div>
+      </div>
+
+      {/* Bottom Content Bar */}
+      <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 bg-gradient-to-t from-bg via-bg/85 to-transparent pointer-events-none z-10">
+        <h3 className="font-display text-sm sm:text-base font-medium text-text group-hover/card:text-accent transition-colors line-clamp-1 mb-1.5">
+          {lang === "bn" ? item.titleBn : item.title}
+        </h3>
+        <div className="flex items-center justify-between text-[11px] font-mono text-muted">
+          <div className="flex items-center gap-1.5">
+            <span className="px-2 py-0.5 rounded-full text-[9px] font-mono bg-surface border border-line text-muted">
+              {item.tools[0]}
+            </span>
+            <span className="text-[10px] text-muted/80 uppercase">
+              {item.aspectRatio}
+            </span>
+          </div>
+          <span className="text-accent flex items-center gap-0.5 group-hover/card:underline">
+            {lang === "bn" ? "ভিডিও দেখুন" : "Watch"}
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ExtraSkillsClient({
   initialVideos,
   settings,
@@ -107,6 +186,26 @@ export default function ExtraSkillsClient({
     if (activeCategory === "all") return true;
     return item.category === activeCategory;
   });
+
+  // Split filtered videos into 2 distinct rows for the marquee
+  const row1Items = filteredVideos.filter((_, idx) => idx % 2 === 0);
+  const row2Items = filteredVideos.filter((_, idx) => idx % 2 !== 0);
+
+  const actualRow1 = row1Items.length > 0 ? row1Items : filteredVideos;
+  const actualRow2 = row2Items.length > 0 ? row2Items : filteredVideos;
+
+  // Build repeated tracks to ensure continuous 50% translateX marquee loop
+  const buildTrack = (items: ExtraSkillVideo[]) => {
+    if (items.length === 0) return [];
+    let list = [...items];
+    while (list.length < 8) {
+      list = [...list, ...items];
+    }
+    return [...list, ...list];
+  };
+
+  const track1 = buildTrack(actualRow1);
+  const track2 = buildTrack(actualRow2);
 
   const categories: { labelEn: string; labelBn: string; value: VideoCategory }[] = [
     { labelEn: "All Work", labelBn: "সকল প্রজেক্ট", value: "all" },
@@ -249,118 +348,64 @@ export default function ExtraSkillsClient({
         })}
       </section>
 
-      {/* 3. BENTO VIDEO SHOWCASE GRID */}
+      {/* 3. TWO-ROW SQUARE VIDEO MARQUEE (RIGHT TO LEFT) */}
       <section className="mb-28 sm:mb-36">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredVideos.map((item) => {
-            const isVertical = item.aspectRatio === "9:16";
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span className="text-xs font-mono tracking-widest text-muted uppercase">
+                {lang === "bn" ? "ভিডিও শোকেস // ডাবল-রো মোশন" : "Video Showcase // Two-Row Marquee"}
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-display font-medium text-text">
+              {lang === "bn" ? "প্রোডাকশন ভিডিও স্ট্রিম" : "Live Production Stream"}
+            </h2>
+          </div>
+          <div className="text-xs font-mono text-muted flex items-center gap-2">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
+            <span>
+              {lang === "bn"
+                ? "যেকোনো কার্ডে ক্লিক করে সম্পূর্ণ ফুল-স্ক্রিন ভিডিও দেখুন"
+                : "Click any square card to expand full video"}
+            </span>
+          </div>
+        </div>
 
-            return (
-              <motion.div
-                layout
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
-                onClick={() => setSelectedVideo(item)}
-                className={`group relative rounded-3xl bg-surface border border-line hover:border-accent/50 overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl hover:-translate-y-1.5 flex flex-col justify-between ${
-                  isVertical ? "lg:row-span-2" : ""
-                }`}
-              >
-                {/* Media Container with Autoplay Hover */}
-                <div
-                  className={`relative w-full bg-black/40 overflow-hidden flex items-center justify-center ${
-                    isVertical ? "aspect-[9/16]" : "aspect-[16/9]"
-                  }`}
-                >
-                  <video
-                    src={item.videoUrl}
-                    poster={item.thumbnail}
-                    loop
-                    muted
-                    playsInline
-                    preload="metadata"
-                    onMouseEnter={(e) => {
-                      const v = e.currentTarget;
-                      v.play().catch(() => {});
-                    }}
-                    onMouseLeave={(e) => {
-                      const v = e.currentTarget;
-                      v.pause();
-                      v.currentTime = 0;
-                    }}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
+        {/* Marquee Wrapper with Edge Fade Vignettes */}
+        <div className="relative w-full overflow-hidden select-none py-2 -mx-6 sm:-mx-10 md:-mx-14 px-6 sm:px-10 md:px-14">
+          {/* Side Edge Fade Gradients for Seamless Blend */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 md:w-36 bg-gradient-to-r from-bg via-bg/80 to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 md:w-36 bg-gradient-to-l from-bg via-bg/80 to-transparent z-20 pointer-events-none" />
 
-                  {/* Dark Vignette Overlay on Top & Bottom */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-black/60 pointer-events-none" />
+          <div className="flex flex-col gap-6 sm:gap-8">
+            {/* ROW 1: Right to Left */}
+            <div className="flex w-max gap-5 sm:gap-6 animate-marquee hover:[animation-play-state:paused] will-change-transform py-2">
+              {track1.map((item, idx) => (
+                <SquareVideoCard
+                  key={`r1-${item.id}-${idx}`}
+                  item={item}
+                  lang={lang}
+                  onSelect={setSelectedVideo}
+                />
+              ))}
+            </div>
 
-                  {/* Top Floating Badges */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                    <span className="px-3 py-1 rounded-full bg-bg/85 backdrop-blur-md border border-line text-[11px] font-mono text-accent font-medium">
-                      {lang === "bn" ? item.categoryLabelBn : item.categoryLabel}
-                    </span>
-
-                    <span className="px-2.5 py-1 rounded-full bg-bg/85 backdrop-blur-md border border-line text-[11px] font-mono text-text flex items-center gap-1.5">
-                      <Clock className="w-3 h-3 text-muted" />
-                      {item.duration}
-                    </span>
-                  </div>
-
-                  {/* Center Play Button on Hover */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-14 h-14 rounded-full bg-accent/90 text-accent-ink flex items-center justify-center scale-90 opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-300 shadow-xl">
-                      <Play className="w-6 h-6 ml-1 fill-accent-ink text-accent-ink" />
-                    </div>
-                  </div>
-
-                  {/* Aspect Ratio Badge at Bottom Right */}
-                  <div className="absolute bottom-3 right-4 pointer-events-none">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-bg/75 backdrop-blur-sm text-muted uppercase">
-                      {item.aspectRatio}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Card Content & Details */}
-                <div className="p-6 sm:p-7 flex flex-col justify-between flex-grow">
-                  <div>
-                    <h3 className="font-display text-xl sm:text-2xl font-medium text-text group-hover:text-accent transition-colors mb-2.5">
-                      {lang === "bn" ? item.titleBn : item.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-muted leading-relaxed line-clamp-2 mb-5">
-                      {lang === "bn" ? item.descriptionBn : item.description}
-                    </p>
-                  </div>
-
-                  <div>
-                    {/* Tool Badges */}
-                    <div className="flex flex-wrap items-center gap-1.5 pt-4 border-t border-line/60">
-                      {item.tools.map((t) => (
-                        <span
-                          key={t}
-                          className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-bg border border-line text-muted"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* View Details Prompt Trigger */}
-                    <div className="mt-4 flex items-center justify-between text-xs font-mono text-accent pt-2">
-                      <span className="group-hover:underline">
-                        {lang === "bn"
-                          ? "ভিডিও দেখুন ও প্রম্পট জানুন"
-                          : "Play Video & View Architecture"}
-                      </span>
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+            {/* ROW 2: Right to Left (Fluid Pace for Organic Movement) */}
+            <div
+              className="flex w-max gap-5 sm:gap-6 animate-marquee hover:[animation-play-state:paused] will-change-transform py-2"
+              style={{ animationDuration: "45s" }}
+            >
+              {track2.map((item, idx) => (
+                <SquareVideoCard
+                  key={`r2-${item.id}-${idx}`}
+                  item={item}
+                  lang={lang}
+                  onSelect={setSelectedVideo}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
