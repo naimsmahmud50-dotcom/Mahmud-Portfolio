@@ -8,3 +8,5 @@
 - [x] T004: Verify all project records in database have `year: "2026"`
 - [x] T005: Run `npm run build` and `npm run lint` to verify build integrity
 - [x] T006: Commit and push changes to GitHub `main` to trigger Vercel deployment
+- [x] T007: Update default experience period and placeholder in `ExperienceManager.tsx` to 2026
+- [x] T008: Verify live production pages on Vercel (`mahmud-portfolio-flame.vercel.app`)

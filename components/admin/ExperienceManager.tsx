@@ -70,7 +70,7 @@ export default function ExperienceManager() {
 
   const openCreateModal = () => {
     setEditingExperience(null);
-    setPeriod("2024 — Present");
+    setPeriod("2026 — Present");
     setRoleEn("");
     setRoleBn("");
     setCompany("");
@@ -413,7 +413,7 @@ export default function ExperienceManager() {
                   <input
                     type="text"
                     required
-                    placeholder="e.g. 2023 — Present"
+                    placeholder="e.g. 2026 — Present"
                     value={period}
                     onChange={(e) => setPeriod(e.target.value)}
                     className="w-full px-4 py-3 rounded-xl bg-surface-raised border border-white/10 text-sm font-sans text-foreground focus:outline-none focus:border-accent"
