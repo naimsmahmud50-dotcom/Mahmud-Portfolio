@@ -44,6 +44,7 @@ function formatRouteName(href: string): string {
   if (clean === "/work") return "Work";
   if (clean === "/about") return "About";
   if (clean === "/contact") return "Contact";
+  if (clean === "/extra-skills") return "Extra Skills";
   if (clean.startsWith("/work/")) {
     const slug = clean.replace("/work/", "");
     return slug

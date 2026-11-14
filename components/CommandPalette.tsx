@@ -18,6 +18,7 @@ import {
   BookOpen,
   ArrowRight,
   Layers,
+  Sparkles,
 } from "lucide-react";
 import { useTheme } from "./ThemeToggle";
 import { useI18n } from "@/lib/i18n";
@@ -106,6 +107,13 @@ export default function CommandPalette() {
       category: "Pages",
       icon: User,
       action: () => navigate("/about"),
+    },
+    {
+      id: "page-extra-skills",
+      label: "Extra Skills — AI Video Generation & Creative Media",
+      category: "Pages",
+      icon: Sparkles,
+      action: () => navigate("/extra-skills"),
     },
     {
       id: "page-contact",

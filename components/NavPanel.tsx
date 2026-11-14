@@ -20,6 +20,7 @@ const navItems = [
   { href: "/work", label: "Work", index: "02" },
   { href: "/about", label: "About", index: "03" },
   { href: "/contact", label: "Contact", index: "04" },
+  { href: "/extra-skills", label: "Extra Skills", index: "05" },
 ];
 
 const fallbackSocialLinks = [

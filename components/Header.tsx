@@ -103,6 +103,9 @@ export default function Header({ settings }: HeaderProps) {
             <SlideLink href="/about" isActive={pathname === "/about"}>
               About
             </SlideLink>
+            <SlideLink href="/extra-skills" isActive={pathname === "/extra-skills"}>
+              Extra Skills
+            </SlideLink>
             <SlideLink href="/contact" isActive={pathname === "/contact"}>
               Contact
             </SlideLink>

@@ -1174,3 +1174,155 @@ export async function getSkillClusters(): Promise<SkillCluster[]> {
 
   return clusters;
 }
+
+// ============================================================================
+// 10. EXTRA SKILLS & AI VIDEO SHOWCASE DATA
+// ============================================================================
+
+export interface ExtraSkillVideo {
+  id: string;
+  slug: string;
+  title: string;
+  titleBn: string;
+  category: "all" | "saas" | "reels" | "cinematic" | "ecommerce";
+  categoryLabel: string;
+  categoryLabelBn: string;
+  aspectRatio: "16:9" | "9:16";
+  duration: string;
+  videoUrl: string;
+  thumbnail: string;
+  tools: string[];
+  description: string;
+  descriptionBn: string;
+  promptNotes: string;
+  promptNotesBn: string;
+  featured: boolean;
+  order: number;
+}
+
+export const defaultExtraSkillVideos: ExtraSkillVideo[] = [
+  {
+    id: "vid-1",
+    slug: "autonomous-ai-analytics-platform",
+    title: "Next-Gen Autonomous AI Analytics Platform",
+    titleBn: "পরবর্তী প্রজন্মের এআই অ্যানালিটিক্স প্ল্যাটফর্ম প্রোমো",
+    category: "saas",
+    categoryLabel: "SaaS Launch Promo",
+    categoryLabelBn: "স্যাস লঞ্চ প্রোমো",
+    aspectRatio: "16:9",
+    duration: "0:45",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-screen-close-up-41484-large.mp4",
+    thumbnail: "/images/projects/madrasah.svg",
+    tools: ["Kling AI 1.5", "Flux 1.1 Pro", "ElevenLabs", "Premiere Pro"],
+    description: "High-impact commercial promo video generated for an enterprise AI analytics dashboard. Features cybernetic HUD overlays, fluid camera sweeps, and neural network data flows.",
+    descriptionBn: "এন্টারপ্রাইজ এআই অ্যানালিটিক্স ড্যাশবোর্ডের জন্য তৈরি কমার্শিয়াল প্রোমো ভিডিও। এতে রয়েছে সাইবারনেটিক এইচইউডি ওভারলে এবং ক্যামেরা সুইপ মোশন।",
+    promptNotes: "Cybernetic futuristic UI dashboard, glowing emerald and slate graphs, floating holographic nodes, cinematic slow pan, 4K Unreal Engine 5 aesthetic, volumetric lighting.",
+    promptNotesBn: "সাইবারনেটিক ফিউচারিস্টিক ইউআই ড্যাশবোর্ড, নিয়ন এমারেল্ড ডাটা গ্রাফ, হলোপোগ্রাফিক নোডস, সিনেমেটিক প্যানিং এবং ভলিউমেট্রিক লাইটিং।",
+    featured: true,
+    order: 1,
+  },
+  {
+    id: "vid-2",
+    slug: "rise-of-ai-agent-swarms",
+    title: "The Rise of Autonomous AI Agent Swarms",
+    titleBn: "স্বয়ংক্রিয় এআই এজেন্টদের উত্থান — ভাইরাল রিল",
+    category: "reels",
+    categoryLabel: "Viral Faceless Reel",
+    categoryLabelBn: "ভাইরাল ফেসলেস রিল",
+    aspectRatio: "9:16",
+    duration: "0:30",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-vertical-animation-of-futuristic-circuits-and-lights-42407-large.mp4",
+    thumbnail: "/images/projects/madrasah.svg",
+    tools: ["Runway Gen-3 Alpha", "Midjourney v6.1", "ElevenLabs Voice", "CapCut Pro"],
+    description: "Fast-paced vertical short-form video engineered for TikTok and Instagram Reels. Optimized for maximum retention with kinetic subtitles, neural voice cloning, and macro tech visuals.",
+    descriptionBn: "টিকটক ও ইনস্টাগ্রাম রিলসের জন্য তৈরি দ্রুতগতির ৯:১৬ পোর্ট্রেট ভিডিও। হাই-রিটেনশন হুক, সিনেমেটিক ভয়েসওভার ও ডায়নামিক ক্যাপশন সমৃদ্ধ।",
+    promptNotes: "Macro extreme close-up of a futuristic semiconductor chip pulsing with blue and green photon circuits, ultra-fast zoom-in transition, cyber-tech realism.",
+    promptNotesBn: "ফিউচারিস্টিক সেমিকন্ডাক্টর মাইক্রোচিপের ম্যাক্রো ক্লোজ-আপ, ফোটন সার্কিট পালস, দ্রুত জুম-ইন ট্রানজিশন ও সাইবার-টেক রিয়্যালিজম।",
+    featured: true,
+    order: 2,
+  },
+  {
+    id: "vid-3",
+    slug: "neo-dhaka-2088-cyberpunk",
+    title: "Neo-Dhaka 2088: Cybernetic Metropolis",
+    titleBn: "নিও-ঢাকা ২০৮৮: সাইবারনেটিক মেগাসিটি",
+    category: "cinematic",
+    categoryLabel: "Cinematic 3D Concept",
+    categoryLabelBn: "সিনেমেটিক ৩ডি কনসেপ্ট",
+    aspectRatio: "16:9",
+    duration: "0:52",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-cyberpunk-city-at-night-with-neon-lights-40019-large.mp4",
+    thumbnail: "/images/projects/madrasah.svg",
+    tools: ["Kling AI 1.5", "Luma Dream Machine", "Flux Pro", "Audition SFX"],
+    description: "Speculative sci-fi worldbuilding cinematic visual depicting future Dhaka transformed into a hyper-dense cybernetic megalopolis with flying drones and neon billboards.",
+    descriptionBn: "ভবিষ্যত ঢাকার একটি সাইবারপাঙ্ক রূপান্তর—উড়ন্ত ড্রোন, ভেজা রাজপথে নিয়ন রিফ্লেকশন এবং মেগাসিটি আর্কিটেকচার নিয়ে তৈরি সিনেমেটিক কনসেপ্ট।",
+    promptNotes: "Rain-slicked futuristic highway overpass in high-tech cyberpunk city at midnight, neon holographic signage in Bengali and English, flying autonomous vehicles with light trails, photorealistic atmospheric fog.",
+    promptNotesBn: "মধ্যরাতের বৃষ্টিভেজা সাইবারপাঙ্ক হাইওয়ে, বাংলা ও ইংরেজি নিয়ন হলোগ্রাম, লাইট ট্রেইল সহ উড়ন্ত স্বয়ংক্রিয় গাড়ি এবং বাস্তবসম্মত কুয়াশা।",
+    featured: true,
+    order: 3,
+  },
+  {
+    id: "vid-4",
+    slug: "aeroglide-luxury-sneaker-commercial",
+    title: "AeroGlide Zero: Luxury Footwear Commercial",
+    titleBn: "অ্যারোগ্লাইড জিরো: লাক্সারি স্নিকার কমার্শিয়াল",
+    category: "ecommerce",
+    categoryLabel: "E-Commerce Video Ad",
+    categoryLabelBn: "ই-কমার্স বিজ্ঞাপন",
+    aspectRatio: "9:16",
+    duration: "0:25",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-vertical-animation-of-futuristic-circuits-and-lights-42407-large.mp4",
+    thumbnail: "/images/projects/madrasah.svg",
+    tools: ["Runway Gen-3", "Flux 1.1 Pro", "Premiere Pro", "Splice SFX"],
+    description: "High-energy commercial advertisement for luxury performance footwear. Features 360-degree floating product rotations, dynamic lighting, and explosive particle physics.",
+    descriptionBn: "প্রিমিয়াম স্নিকার ব্র্যান্ডের জন্য তৈরি ৩৬০-ডিগ্রি রোটেশনাল বিজ্ঞাপন। ফ্লোটিং প্রডাক্ট অ্যানিমেশন ও পার্টিকেল এফেক্টস সমৃদ্ধ।",
+    promptNotes: "Luxury black and lime carbon-fiber athletic sneaker floating in mid-air against dark studio backdrop, 360 rotational slow motion, cinematic rim lighting, gold dust particle disintegration.",
+    promptNotesBn: "ডার্ক স্টুডিও ব্যাকড্রপে শূন্যে ভাসমান কার্বন-ফাইবার স্নিকার, ৩৬০-ডিগ্রি স্লো মোশন রোটেশন, গোল্ডেন পার্টিকেল ও সিনেমেটিক রিম লাইটিং।",
+    featured: false,
+    order: 4,
+  },
+  {
+    id: "vid-5",
+    slug: "how-llms-think-explainer",
+    title: "How Large Language Models Really Think",
+    titleBn: "লার্জ ল্যাঙ্গুয়েজ মডেল কীভাবে চিন্তা করে — এক্সপ্লেইনার",
+    category: "saas",
+    categoryLabel: "Educational Explainer",
+    categoryLabelBn: "এডুকেশনাল এক্সপ্লেইনার",
+    aspectRatio: "16:9",
+    duration: "1:05",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-screen-close-up-41484-large.mp4",
+    thumbnail: "/images/projects/madrasah.svg",
+    tools: ["HeyGen", "ElevenLabs", "Flux Pro", "Remotion Code Video"],
+    description: "Educational technical explainer simplifying transformer neural networks and multi-head attention mechanisms with fluid 3D visual metaphors and crystal-clear voiceover.",
+    descriptionBn: "ট্রান্সফরমার আর্কিটেকচার ও এআই ল্যাঙ্গুয়েজ মডেলের গভীর মেকানিজম সহজ ৩ডি ভিজ্যুয়াল মেটাফর ও স্পষ্ট ভয়েসওভারের মাধ্যমে উপস্থাপন।",
+    promptNotes: "Abstract 3D multidimensional vector space, glowing neural embeddings clustering together, transparent vector mathematical matrices with glowing connections.",
+    promptNotesBn: "ত্রিমাত্রিক ভেক্টর স্পেস, উজ্জ্বল নিউরাল এমবেডিংস ক্লাস্টার এবং গ্লোয়িং কানেকশন সহ গাণিতিক ম্যাট্রিক্স ভিজ্যুয়ালাইজেশন।",
+    featured: false,
+    order: 5,
+  },
+  {
+    id: "vid-6",
+    slug: "zentask-productivity-app-launch",
+    title: "ZenTask: Minimalist Productivity App Launch",
+    titleBn: "জেনটাস্ক: ফ্লাটার প্রোডাক্টিভিটি অ্যাপ লঞ্চ প্রোমো",
+    category: "reels",
+    categoryLabel: "App Store Launch Promo",
+    categoryLabelBn: "অ্যাপ লঞ্চ প্রোমো",
+    aspectRatio: "9:16",
+    duration: "0:35",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-vertical-animation-of-futuristic-circuits-and-lights-42407-large.mp4",
+    thumbnail: "/images/projects/madrasah.svg",
+    tools: ["Kling AI 1.5", "Flutter UI Capture", "Flux Pro", "CapCut Pro"],
+    description: "Launch reel for a modern cross-platform Flutter productivity application. Displays fluid glassmorphic UI interactions and sleek smartphone device mockups in motion.",
+    descriptionBn: "আধুনিক ফ্লাটার প্রোডাক্টিভিটি অ্যাপের লঞ্চ রিল। ফ্লুইড গ্লাস মরফিক ইউআই ইন্টারঅ্যাকশন ও স্মার্টফোন মকআপ সমৃদ্ধ।",
+    promptNotes: "Minimalist titanium smartphone hovering at dynamic isometric angle displaying sleek dark-mode productivity UI with emerald task checkboxes, smooth UI gesture tap ripples.",
+    promptNotesBn: "টাইটানিয়াম স্মার্টফোনে ডার্ক-মোড ইউআই, এমারেল্ড চেকবক্স, মসৃণ ইন্টারঅ্যাকশন রিপল ও আইসোমেট্রিক মোশন।",
+    featured: false,
+    order: 6,
+  },
+];
+
+export async function getExtraSkillVideos(): Promise<ExtraSkillVideo[]> {
+  return defaultExtraSkillVideos;
+}
