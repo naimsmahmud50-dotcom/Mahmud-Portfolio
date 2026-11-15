@@ -34,7 +34,8 @@ export default function Button({
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     // If opening in a new tab, downloading a file, or linking to a static file asset, let the browser handle it
-    if (target === "_blank" || download || (href && /\.[a-zA-Z0-9]+$/.test(href))) {
+    const cleanPath = (href || "").split(/[?#]/)[0];
+    if (target === "_blank" || download || /\.[a-zA-Z0-9]+$/.test(cleanPath)) {
       onClick?.();
       return;
     }
