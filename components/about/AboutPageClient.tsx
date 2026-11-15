@@ -244,6 +244,7 @@ export default function AboutPageClient({
               href={cvLink}
               target="_blank"
               rel="noopener noreferrer"
+              download="Mahmud_Hasan_CV_Stylish.pdf"
               variant="outline"
               size="md"
               className="w-full justify-between"

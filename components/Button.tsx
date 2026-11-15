@@ -7,6 +7,7 @@ import { usePageTransition } from "@/context/TransitionContext";
 interface ButtonProps {
   children: React.ReactNode;
   href?: string;
+  download?: boolean | string;
   onClick?: () => void;
   variant?: "outline" | "filled" | "ghost";
   size?: "sm" | "md" | "lg";
@@ -19,6 +20,7 @@ interface ButtonProps {
 export default function Button({
   children,
   href,
+  download,
   onClick,
   variant = "outline",
   size = "md",
@@ -31,6 +33,12 @@ export default function Button({
   const { navigate } = usePageTransition();
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // If opening in a new tab, downloading a file, or linking to a static file asset, let the browser handle it
+    if (target === "_blank" || download || (href && /\.[a-zA-Z0-9]+$/.test(href))) {
+      onClick?.();
+      return;
+    }
+
     if (href && href.startsWith("/")) {
       e.preventDefault();
       onClick?.();
@@ -74,7 +82,7 @@ export default function Button({
   return (
     <MagneticWrapper strength={strength}>
       {href ? (
-        <a href={href} target={target} rel={rel} onClick={handleLinkClick}>
+        <a href={href} target={target} rel={rel} download={download} onClick={handleLinkClick}>
           {content}
         </a>
       ) : (

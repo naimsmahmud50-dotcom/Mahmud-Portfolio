@@ -51,7 +51,7 @@ Detailed audit of all exact `href` values across the application:
 | **Telegram** | `https://t.me/+8801767850859` | **BROKEN** | **Invalid syntax.** In Telegram, `t.me/<username>` is for user chats, while `t.me/+<hash>` is strictly for private invite hashes. Clicking `t.me/+8801767850859` throws a Telegram error: *"The invite link is invalid or expired"*. Must be updated to a real Telegram username (e.g. `https://t.me/your_username`). |
 | **GitHub Profile** | `https://github.com/naimsmahmud50-dotcom` | **Working** | Returns HTTP 200 OK. Profile exists. |
 | **LinkedIn Profile** | `https://www.linkedin.com/in/mahmud-hasan-687908269...` | **Working** | Live public LinkedIn profile. |
-| **CV Download** | `href="/cv.pdf"` | **Fake / Placeholder** | File exists at `public/cv.pdf`, but it is an empty 317-byte blank PDF containing no text, skills, or experience. |
+| **CV Download** | `href="/cv.pdf"` | **Resolved** | Real professional CV installed at `public/cv.pdf` and `public/cv/Mahmud_Hasan_CV_Stylish.pdf` (51 KB). |
 | **Project 1 Demo** | `https://example.com/madrasah-demo` | **Fake** | Generic `example.com` placeholder. |
 | **Project 1 GitHub** | `https://github.com/naimsmahmud50-dotcom/Madrasha-Managemant-Softaware` | **Working** | HTTP 200 OK (Public repo). |
 | **Project 2 Demo** | `https://example.com/secure-my-pc` | **Fake** | Generic `example.com` placeholder. |
@@ -158,7 +158,7 @@ The admin panel security was evaluated using Strix authentication and authorizat
 | **3** | Telegram DM Link | **Broken** | `components/Footer.tsx`<br>`app/contact/page.tsx`<br>`content/site.ts` | Replace `https://t.me/+8801767850859` with real Telegram username format (e.g. `https://t.me/<username>`). |
 | **4** | GitHub Project Links (404s) | **Broken** | `data/projects.ts` | Fix 3 broken 404 links: `Pc-Secure-By-apps`, `Linkdin-Automation-`, and `Student-Life-Circle` (rename or point to real active repos like `Maijrun-Teach` or `MindPulse`). |
 | **5** | Project Live Demo URLs | **Fake / Broken** | `data/projects.ts` | All 7 demos point to `example.com` or dead domains (`travelwithmaijrun.com`). Replace with real live deployments, Vercel preview links, or remove `demoUrl` when no live deployment exists. |
-| **6** | CV / Resume Download | **Fake / Placeholder** | `public/cv.pdf` | Replace the 317-byte empty blank PDF with Mahmud's actual resume or a professionally formatted portfolio PDF summary. |
+| **6** | CV / Resume Download | **Resolved** | `public/cv.pdf` | Replaced 317-byte placeholder with Mahmud's actual resume (51 KB) at `public/cv.pdf` and `public/cv/Mahmud_Hasan_CV_Stylish.pdf`. |
 | **7** | Admin Authentication | **Broken / Insecure** | `app/admin/login/page.tsx`<br>`app/admin/page.tsx` | Remove client-side passkeys. Implement Next.js `middleware.ts` with encrypted HTTP-only session cookies and server-side password verification. |
 | **8** | Admin Projects Editability | **Hardcoded / Read-Only** | `app/admin/page.tsx` | The admin table only renders static data. Add CRUD actions (Create, Edit, Delete, Reorder) backed by API routes and persistent storage. |
 | **9** | Admin Leads Inbox | **Fake Mockup** | `app/admin/page.tsx` | Currently shows a static placeholder note. Build a real inquiries inbox that fetches stored submissions from the backend and lets Mahmud mark them as read/replied. |
